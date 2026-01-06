@@ -33,13 +33,40 @@ app = Flask(__name__)
 # ----------------------------
 # CONFIG
 # ----------------------------
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///database.db"
-app.config["SECRET_KEY"] = "R333!///ok."
-app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(days=7)
-app.config["UPLOAD_FOLDER"] = "static/uploads"
 
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+
+# Security
+app.config["SECRET_KEY"] = os.getenv(
+    "SECRET_KEY",
+    "dev-secret-key-change-me"
+)
+
+# Database
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv(
+    "DATABASE_URL",
+    f"sqlite:///{os.path.join(BASE_DIR, 'database.db')}"
+)
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+# Sessions
+app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(
+    days=int(os.getenv("SESSION_LIFETIME_DAYS", 7))
+)
+
+# Uploads
+app.config["UPLOAD_FOLDER"] = os.getenv(
+    "UPLOAD_FOLDER",
+    os.path.join("static", "uploads")
+)
+
+# ----------------------------
 # Babel / i18n
-app.config["BABEL_DEFAULT_LOCALE"] = "de"
+# ----------------------------
+app.config["BABEL_DEFAULT_LOCALE"] = os.getenv(
+    "BABEL_DEFAULT_LOCALE",
+    "de"
+)
 app.config["BABEL_SUPPORTED_LOCALES"] = ["de", "en"]
 app.config["BABEL_TRANSLATION_DIRECTORIES"] = "translations"
 
