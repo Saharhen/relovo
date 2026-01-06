@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-section">
+  <div class="page-card page-card-narrow">
+    <h2 class="page-title">{{ _("Создать объявление") }}</h2>
+
+    <form method="POST" enctype="multipart/form-data" class="listing-form">
+
+      <div class="input-group">
+        <label>{{ _("Название") }}</label>
+        <input type="text" name="title" required>
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <label>{{ _("Город") }}</label>
+          <input type="text" name="city" required>
+        </div>
+        <div class="input-group">
+          <label>{{ _("Цена (€ / мес)") }}</label>
+          <input type="number" name="price" required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>{{ _("Тип жилья") }}</label>
+        <select name="type" required>
+          <option value="apartment">{{ _("Квартира") }}</option>
+          <option value="room">{{ _("Комната") }}</option>
+          <option value="house">{{ _("Дом") }}</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>{{ _("Описание") }}</label>
+        <textarea name="description" rows="4" required></textarea>
+      </div>
+
+      <div class="input-group">
+        <label>{{ _("Фотографии (до 10 штук)") }}</label>
+
+        <div class="photo-upload" id="photo-upload">
+          <div class="drop-zone" id="drop-zone">
+            <div class="drop-icon">📷</div>
+            <div class="drop-text">
+              <strong>{{ _("Перетащи сюда фото") }}</strong><br>
+              {{ _("или нажми, чтобы выбрать") }}
+            </div>
+            <!-- ВАЖНО: массив файлов -->
+            <input type="file" name="images[]" accept="image/*" multiple>
+          </div>
+
+          <div class="preview-grid" id="preview-grid"></div>
+        </div>
+      </div>
+
+      <button type="submit" class="primary-btn full-btn">{{ _("Опубликовать") }}</button>
+    </form>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">{{ _("Объявления") }}</h1>
+
+    <div class="filters-wrapper">
+        <button class="fbtn" onclick="openFilter('city', this)">🏙 {{ _("Город") }}</button>
+        <button class="fbtn" onclick="openFilter('price', this)">💰 {{ _("Цена") }}</button>
+        <button class="fbtn" onclick="openFilter('type', this)">🏠 {{ _("Тип жилья") }}</button>
+        <button class="fbtn search-btn" onclick="applyFilters()">🔎 {{ _("Поиск") }}</button>
+
+        <div id="filter-city" class="filter-popup">
+            <label>{{ _("Город") }}</label>
+            <input type="text" id="city-input" placeholder="{{ _('Введите город') }}">
+        </div>
+
+        <div id="filter-price" class="filter-popup">
+            <label>{{ _("Цена от") }}</label>
+            <input type="number" id="min-price">
+            <label>{{ _("Цена до") }}</label>
+            <input type="number" id="max-price">
+        </div>
+
+        <div id="filter-type" class="filter-popup">
+            <label>{{ _("Тип жилья") }}</label>
+            <select id="type-select">
+                <option value="">{{ _("Любой") }}</option>
+                <option value="apartment">{{ _("Квартира") }}</option>
+                <option value="house">{{ _("Дом") }}</option>
+                <option value="room">{{ _("Комната") }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="relok-grid">
+        {% for item in listings %}
+        <div class="relok-card">
+            <a href="/listing/{{ item.id }}">
+                {% if item.image_filenames %}
+                    <img src="/static/uploads/{{ item.image_filenames[0] }}" class="relok-img">
+                {% else %}
+                    <img src="/static/no_image.png" class="relok-img">
+                {% endif %}
+            </a>
+
+            <div class="relok-info">
+                <h3 class="relok-title">{{ item.title }}</h3>
+
+                {% if item.avg_rating %}
+                    <div class="relok-rating">
+                        ⭐ {{ "%.1f"|format(item.avg_rating) }} ({{ item.reviews|length }})
+                    </div>
+                {% else %}
+                    <div class="relok-rating">{{ _("Нет отзывов") }}</div>
+                {% endif %}
+
+                <p class="relok-sub">
+                    {{ item.city }} • 
+                    {% if item.type == "apartment" %}{{ _("Квартира") }}{% endif %}
+                    {% if item.type == "house" %}{{ _("Дом") }}{% endif %}
+                    {% if item.type == "room" %}{{ _("Комната") }}{% endif %}
+                </p>
+
+                <p class="relok-price">€{{ item.price }}/{{ _("мес") }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

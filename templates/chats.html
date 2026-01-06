@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+    <h1 class="page-title">{{ _("Сообщения") }}</h1>
+
+    {% if threads %}
+        <div class="chat-list">
+            {% for t in threads %}
+                <a href="/chat/{{ t.id }}" class="chat-item">
+                    <div class="chat-title">
+                        {{ t.listing.title }}
+                    </div>
+
+                    <div class="chat-sub">
+                        {{ _("Объявление") }} · {{ t.listing.city }}
+                    </div>
+
+                    <div class="chat-time">
+                        {{ t.last_activity.strftime("%d.%m.%Y %H:%M") }}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>{{ _("У вас пока нет сообщений") }}</p>
+    {% endif %}
+
+</div>
+
+{% endblock %}

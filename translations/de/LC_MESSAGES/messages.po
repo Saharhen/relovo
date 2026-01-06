@@ -1,0 +1,1430 @@
+# German translations for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+msgid ""
+msgstr ""
+"Language: de\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+# -----------------------
+# Навигация
+# -----------------------
+
+msgid "Главная"
+msgstr "Startseite"
+
+msgid "Жильё"
+msgstr "Unterkünfte"
+
+msgid "Войти"
+msgstr "Anmelden"
+
+msgid "Выйти"
+msgstr "Abmelden"
+
+msgid "Личный кабинет"
+msgstr "Benutzerkonto"
+
+msgid "Добавить объявление"
+msgstr "Anzeige erstellen"
+
+msgid "Мои объявления"
+msgstr "Meine Anzeigen"
+
+msgid "Показать"
+msgstr "Zeigen"
+
+msgid "Скрыть"
+msgstr "Verbergen"
+
+msgid "Тип аккаунта"
+msgstr "Kontotyp"
+
+msgid "Я ищу жильё"
+msgstr "Ich suche eine Unterkunft"
+
+msgid "Я сдаю жильё"
+msgstr "Ich vermiete eine Unterkunft"
+
+msgid "Зарегистрироваться"
+msgstr "Registrieren"
+
+# -----------------------
+# Главная страница
+# -----------------------
+
+msgid "Найди жильё легко"
+msgstr "Finde deine Unterkunft ganz einfach"
+
+msgid "Relovo помогает найти идеальное жильё под ваш стиль жизни"
+msgstr "Relovo hilft dir, die perfekte Unterkunft für deinen Lebensstil zu finden"
+
+msgid "Например: тихое место для работы в Берлине"
+msgstr "Zum Beispiel: ein ruhiger Ort zum Arbeiten in Berlin"
+
+
+msgid "Как работает Relovo"
+msgstr "Wie Relovo funktioniert"
+
+msgid "1. Опиши, как ты живёшь"
+msgstr "1. Beschreibe deinen Lebensstil"
+
+msgid "Введи свои предпочтения: работа, семья, питомцы — AI сам подберёт варианты."
+msgstr "Gib deine Vorlieben ein: Arbeit, Familie, Haustiere — die KI findet passende Optionen."
+
+msgid "2. Получи персональные рекомендации"
+msgstr "2. Erhalte persönliche Empfehlungen"
+
+msgid "Наш AI анализирует тысячи объявлений и выдаёт жильё, подходящее под твой стиль жизни."
+msgstr "Unsere KI analysiert Tausende von Angeboten und findet passende Unterkünfte für dich."
+
+msgid "Оформи аренду онлайн"
+msgstr "Miete online abschließen"
+
+msgid "Подпиши цифровой договор, пройди верификацию и оплати через защищённый escrow."
+msgstr "Unterzeichne den digitalen Vertrag, verifiziere dich und bezahle über einen sicheren Treuhanddienst."
+
+msgid "Популярные варианты"
+msgstr "Beliebte Optionen"
+
+msgid "Посмотреть все объявления"
+msgstr "Alle Anzeigen ansehen"
+
+msgid "Найти"
+msgstr "Suchen"
+
+# -----------------------
+# Логин / Регистрация
+# -----------------------
+
+msgid "Войти в аккаунт"
+msgstr "In dein Konto einloggen"
+
+msgid "Email"
+msgstr "E-Mail"
+
+msgid "Пароль"
+msgstr "Passwort"
+
+msgid "Введите email"
+msgstr "E-Mail eingeben"
+
+msgid "Введите пароль"
+msgstr "Passwort eingeben"
+
+msgid "Нет аккаунта?"
+msgstr "Noch kein Konto?"
+
+msgid "Создать"
+msgstr "Registrieren"
+
+msgid "Создать аккаунт"
+msgstr "Konto erstellen"
+
+msgid "Повторите пароль"
+msgstr "Passwort wiederholen"
+
+msgid "Уже есть аккаунт?"
+msgstr "Bereits ein Konto?"
+
+# -----------------------
+# Объявления
+# -----------------------
+
+msgid "Город"
+msgstr "Stadt"
+
+msgid "Цена"
+msgstr "Preis"
+
+msgid "Тип"
+msgstr "Typ"
+
+msgid "Описание"
+msgstr "Beschreibung"
+
+msgid "Сохранить"
+msgstr "Speichern"
+
+msgid "Удалить"
+msgstr "Löschen"
+
+msgid "Редактировать объявление"
+msgstr "Anzeige bearbeiten"
+
+msgid "Создать объявление"
+msgstr "Anzeige erstellen"
+
+msgid "Мои объявления"
+msgstr "Meine Anzeigen"
+
+msgid "Добавить фотографии"
+msgstr "Fotos hinzufügen"
+
+msgid "Нет объявлений"
+msgstr "Keine Anzeigen"
+
+# -----------------------
+# Отзывы
+# -----------------------
+
+msgid "Отзывы"
+msgstr "Bewertungen"
+
+msgid "Оставить отзыв"
+msgstr "Bewertung schreiben"
+
+msgid "Ваша оценка"
+msgstr "Ihre Bewertung"
+
+msgid "Ваш отзыв"
+msgstr "Ihre Rezension"
+
+msgid "Отправить"
+msgstr "Absenden"
+
+msgid "Редактировать отзыв"
+msgstr "Bewertung bearbeiten"
+
+# -----------------------
+# Навигация
+# -----------------------
+
+msgid "Главная"
+msgstr "Startseite"
+
+msgid "Жильё"
+msgstr "Unterkünfte"
+
+msgid "Войти"
+msgstr "Anmelden"
+
+msgid "Выйти"
+msgstr "Abmelden"
+
+msgid "Личный кабинет"
+msgstr "Benutzerkonto"
+
+msgid "Добавить объявление"
+msgstr "Anzeige erstellen"
+
+msgid "Мои объявления"
+msgstr "Meine Anzeigen"
+
+# -----------------------
+# Главная страница
+# -----------------------
+
+msgid "Найди жильё легко"
+msgstr "Finde deine Unterkunft ganz einfach"
+
+msgid "Relovo помогает найти идеальное жильё под ваш стиль жизни"
+msgstr "Relovo hilft dir, die perfekte Unterkunft für deinen Lebensstil zu finden"
+
+msgid "Как работает Relovo"
+msgstr "Wie Relovo funktioniert"
+
+msgid "1. Опиши, как ты живёшь"
+msgstr "1. Beschreibe deinen Lebensstil"
+
+msgid "Введи свои предпочтения: работа, семья, питомцы — AI сам подберёт варианты."
+msgstr "Gib deine Vorlieben ein: Arbeit, Familie, Haustiere — die KI findet passende Optionen."
+
+msgid "2. Получи персональные рекомендации"
+msgstr "2. Erhalte persönliche Empfehlungen"
+
+msgid "Наш AI анализирует тысячи объявлений и выдаёт жильё, подходящее под твой стиль жизни."
+msgstr "Unsere KI analysiert Tausende von Angeboten und findet passende Unterkünfte für dich."
+
+msgid "3. Оформи аренду онлайн"
+msgstr "3. Miete online abschließen"
+
+msgid "Подпиши цифровой договор, пройди верификацию и оплати через защищённый escrow."
+msgstr "Unterzeichne den digitalen Vertrag, verifiziere dich und bezahle über einen sicheren Treuhanddienst."
+
+msgid "🔥 Популярные варианты"
+msgstr "🔥 Beliebte Optionen"
+
+msgid "Посмотреть все объявления"
+msgstr "Alle Anzeigen ansehen"
+
+msgid "Найти"
+msgstr "Suchen"
+
+msgid "Рады видеть вас снова в Relovo"
+msgstr "Schön, Sie wieder bei Relovo zu sehen"
+
+msgid "Объявления"
+msgstr "Anzeigen"
+
+msgid "Оставьте пустым, если не изменяете"
+msgstr "Leer lassen, wenn Sie es nicht ändern"
+
+msgid "Обновите информацию профиля и параметры аккаунта."
+msgstr "Aktualisieren Sie Ihre Profilinformationen und Kontoeinstellungen."
+
+msgid "мес"
+msgstr "Monat"
+
+msgid "Редактировать"
+msgstr "Bearbeiten"
+
+msgid "Посмотреть доступное жильё"
+msgstr "Verfügbare Unterkünfte ansehen"
+
+msgid "Добавить объявление"
+msgstr "Anzeige erstellen"
+
+msgid "Опубликуйте новое жильё"
+msgstr "Neue Unterkunft veröffentlichen"
+
+msgid "Мои объявления"
+msgstr "Meine Anzeigen"
+
+msgid "Управляйте опубликованными предложениями"
+msgstr "Verwalten Sie Ihre veröffentlichten Angebote"
+
+msgid "Настройки профиля"
+msgstr "Profileinstellungen"
+
+msgid "Изменение данных и предпочтений"
+msgstr "Daten und Präferenzen bearbeiten"
+
+
+# -----------------------
+# Логин / Регистрация
+# -----------------------
+
+msgid "Войти в аккаунт"
+msgstr "In dein Konto einloggen"
+
+msgid "Email"
+msgstr "E-Mail"
+
+msgid "Пароль"
+msgstr "Passwort"
+
+msgid "Введите email"
+msgstr "E-Mail eingeben"
+
+msgid "Введите пароль"
+msgstr "Passwort eingeben"
+
+msgid "Нет аккаунта?"
+msgstr "Noch kein Konto?"
+
+msgid "Создать"
+msgstr "Registrieren"
+
+msgid "Создать аккаунт"
+msgstr "Konto erstellen"
+
+msgid "Повторите пароль"
+msgstr "Passwort wiederholen"
+
+msgid "Уже есть аккаунт?"
+msgstr "Bereits ein Konto?"
+
+# -----------------------
+# Объявления
+# -----------------------
+
+msgid "Объявления"
+msgstr "Anzeigen"
+
+msgid "Город"
+msgstr "Stadt"
+
+msgid "Введите город"
+msgstr "Stadt eingeben"
+
+msgid "Цена"
+msgstr "Preis"
+
+msgid "Цена от"
+msgstr "Preis von"
+
+msgid "Цена до"
+msgstr "Preis bis"
+
+msgid "Тип жилья"
+msgstr "Wohnungstyp"
+
+msgid "Поиск"
+msgstr "Suche"
+
+msgid "Любой"
+msgstr "Beliebig"
+
+msgid "Квартира"
+msgstr "Wohnung"
+
+msgid "Дом"
+msgstr "Haus"
+
+msgid "Комната"
+msgstr "Zimmer"
+
+msgid "Нет отзывов"
+msgstr "Keine Bewertungen"
+
+msgid "мес"
+msgstr "Monat"
+
+msgid "Тип"
+msgstr "Typ"
+
+msgid "Описание"
+msgstr "Beschreibung"
+
+msgid "Сохранить"
+msgstr "Speichern"
+
+msgid "Удалить"
+msgstr "Löschen"
+
+msgid "Редактировать объявление"
+msgstr "Anzeige bearbeiten"
+
+msgid "Создать объявление"
+msgstr "Anzeige erstellen"
+
+msgid "Мои объявления"
+msgstr "Meine Anzeigen"
+
+msgid "Добавить фотографии"
+msgstr "Fotos hinzufügen"
+
+msgid "Нет объявлений"
+msgstr "Keine Anzeigen"
+
+# -----------------------
+# Отзывы
+# -----------------------
+
+msgid "Отзывы"
+msgstr "Bewertungen"
+
+msgid "Оставить отзыв"
+msgstr "Bewertung schreiben"
+
+msgid "Ваша оценка"
+msgstr "Ihre Bewertung"
+
+msgid "Ваш отзыв"
+msgstr "Ihre Rezension"
+
+msgid "Отправить"
+msgstr "Absenden"
+
+msgid "Редактировать отзыв"
+msgstr "Bewertung bearbeiten"
+
+# -----------------------
+# Личный кабинет (арендодатель)
+# -----------------------
+
+msgid "Добро пожаловать"
+msgstr "Willkommen"
+
+msgid "Мы рады видеть вас снова в Relovo"
+msgstr "Schön, dich wieder auf Relovo zu sehen"
+
+msgid "Управление объявлениями"
+msgstr "Anzeigen verwalten"
+
+# -----------------------
+# Личный кабинет (арендатор)
+# -----------------------
+
+msgid "Просмотр доступного жилья"
+msgstr "Verfügbare Unterkünfte ansehen"
+
+msgid "Управление отзывами"
+msgstr "Bewertungen verwalten"
+
+# -----------------------
+# Настройки профиля
+# -----------------------
+
+msgid "Настройки профиля"
+msgstr "Profileinstellungen"
+
+msgid "Изменить данные"
+msgstr "Daten bearbeiten"
+
+msgid "Сохранить изменения"
+msgstr "Änderungen speichern"
+
+msgid "Изменение данных и предпочтений"
+msgstr "Daten & Präferenzen ändern"
+
+msgid "Имя"
+msgstr "Name"
+
+msgid "Язык"
+msgstr "Sprache"
+
+msgid "Тема"
+msgstr "Theme"
+
+msgid "Светлая"
+msgstr "Hell"
+
+msgid "Тёмная"
+msgstr "Dunkel"
+
+msgid "Сменить пароль"
+msgstr "Passwort ändern"
+
+msgid "Текущий пароль"
+msgstr "Aktuelles Passwort"
+
+msgid "Новый пароль"
+msgstr "Neues Passwort"
+
+msgid "Повтор нового пароля"
+msgstr "Neues Passwort wiederholen"
+
+msgid "Объявления"
+msgstr "Anzeigen"
+
+msgid "Личный кабинет"
+msgstr "Konto"
+
+msgid "Выйти"
+msgstr "Abmelden"
+
+msgid "Войти"
+msgstr "Anmelden"
+
+msgid "Отзывы"
+msgstr "Bewertungen"
+
+msgid "Удалить"
+msgstr "Löschen"
+
+msgid "Изменить"
+msgstr "Bearbeiten"
+
+msgid "Отзывов пока нет"
+msgstr "Noch keine Bewertungen"
+
+msgid "Оставить отзыв"
+msgstr "Bewertung hinterlassen"
+
+msgid "Оценка"
+msgstr "Bewertung"
+
+msgid "Комментарий"
+msgstr "Kommentar"
+
+msgid "Ваш отзыв..."
+msgstr "Ihr Kommentar..."
+
+msgid "Отправить"
+msgstr "Senden"
+
+msgid "Чтобы оставить отзыв —"
+msgstr "Um eine Bewertung zu hinterlassen —"
+
+msgid "войдите"
+msgstr "melden Sie sich an"
+
+msgid "Редактировать отзыв"
+msgstr "Bewertung bearbeiten"
+
+msgid "Сохранить"
+msgstr "Speichern"
+
+msgid "Отмена"
+msgstr "Abbrechen"
+
+msgid "мес"
+msgstr "Monat"
+
+msgid "Редактировать объявление"
+msgstr "Anzeige bearbeiten"
+
+msgid "Название"
+msgstr "Titel"
+
+msgid "Город"
+msgstr "Stadt"
+
+msgid "Цена (€ / мес)"
+msgstr "Preis (€ / Monat)"
+
+msgid "Тип жилья"
+msgstr "Wohnungstyp"
+
+msgid "Квартира"
+msgstr "Wohnung"
+
+msgid "Комната"
+msgstr "Zimmer"
+
+msgid "Дом"
+msgstr "Haus"
+
+msgid "Описание"
+msgstr "Beschreibung"
+
+msgid "Добавить ещё фото"
+msgstr "Weitere Fotos hinzufügen"
+
+msgid "Перетащи сюда фото"
+msgstr "Ziehe Fotos hierher"
+
+msgid "или нажми, чтобы выбрать"
+msgstr "oder klicken, um auszuwählen"
+
+msgid "Текущие фото"
+msgstr "Aktuelle Fotos"
+
+msgid "Удалить"
+msgstr "Löschen"
+
+msgid "Сохранить изменения"
+msgstr "Änderungen speichern"
+
+msgid "Создать объявление"
+msgstr "Anzeige erstellen"
+
+msgid "Название"
+msgstr "Titel"
+
+msgid "Цена (€ / мес)"
+msgstr "Preis (€ / Monat)"
+
+msgid "Тип жилья"
+msgstr "Wohnungstyp"
+
+msgid "Квартира"
+msgstr "Wohnung"
+
+msgid "Комната"
+msgstr "Zimmer"
+
+msgid "Дом"
+msgstr "Haus"
+
+msgid "Описание"
+msgstr "Beschreibung"
+
+msgid "Фотографии (до 10 штук)"
+msgstr "Fotos (bis zu 10 Stück)"
+
+msgid "Перетащи сюда фото"
+msgstr "Ziehe Fotos hierher"
+
+msgid "или нажми, чтобы выбрать"
+msgstr "oder klicken, um auszuwählen"
+
+msgid "Опубликовать"
+msgstr "Veröffentlichen"
+
+msgid "Чат по объявлению"
+msgstr "Chat zur Anzeige"
+
+msgid "Введите сообщение..."
+msgstr "Nachricht eingeben..."
+
+msgid "Отправить"
+msgstr "Senden"
+
+msgid "Связаться с арендодателем"
+msgstr "Vermieter kontaktieren"
+
+msgid "Сообщения"
+msgstr "Nachrichten"
+
+msgid "Сделка"
+msgstr "Vorgang"
+
+msgid "Сделки"
+msgstr "Vorgänge"
+
+msgid "Участники"
+msgstr "Beteiligte"
+
+msgid "Арендатор"
+msgstr "Mieter"
+
+msgid "Владелец"
+msgstr "Vermieter"
+
+msgid "Статус сделки"
+msgstr "Vorgangsstatus"
+
+msgid "Документы"
+msgstr "Dokumente"
+
+msgid "Ожидает проверки"
+msgstr "In Prüfung"
+
+msgid "Подтверждён"
+msgstr "Bestätigt"
+
+msgid "Отклонён"
+msgstr "Abgelehnt"
+
+msgid "Причина отклонения"
+msgstr "Ablehnungsgrund"
+
+msgid "Загрузить документ"
+msgstr "Dokument hochladen"
+
+msgid "Тип документа"
+msgstr "Dokumenttyp"
+
+msgid "Открыть"
+msgstr "Öffnen"
+
+msgid "История"
+msgstr "Verlauf"
+
+msgid "Сделка создана"
+msgstr "Vorgang erstellt"
+
+msgid "Загружен документ"
+msgstr "Dokument hochgeladen"
+
+msgid "Документ проверен"
+msgstr "Dokument geprüft"
+
+msgid "Статус сделки изменён"
+msgstr "Status geändert"
+
+msgid "Сделка отменена"
+msgstr "Vorgang abgebrochen"
+
+msgid "Документы ещё не загружены"
+msgstr "Noch keine Dokumente hochgeladen"
+
+msgid "docs_pending"
+msgstr "Dokumente werden geprüft"
+
+msgid "docs_approved"
+msgstr "Dokumente bestätigt"
+
+msgid "dates_confirmed"
+msgstr "Mietzeitraum bestätigt"
+
+msgid "ready_to_sign"
+msgstr "Bereit zur Unterzeichnung"
+
+msgid "completed"
+msgstr "Abgeschlossen"
+
+msgid "canceled"
+msgstr "Abgebrochen"
+
+msgid "Текущий этап сделки"
+msgstr "Aktueller Vorgangsstatus"
+
+msgid "Даты аренды подтверждены"
+msgstr "Mietzeitraum bestätigt"
+
+msgid "Период аренды"
+msgstr "Mietzeitraum"
+
+msgid "Арендатор ещё не выбрал даты"
+msgstr "Der Mieter hat noch keinen Zeitraum gewählt"
+
+msgid "Сохранить даты"
+msgstr "Daten speichern"
+
+msgid "Подтвердить даты"
+msgstr "Zeitraum bestätigen"
+
+msgid "Даты подтверждены"
+msgstr "Mietzeitraum bestätigt"
+
+msgid "Даты подтверждены администратором"
+msgstr "Zeitraum vom Administrator bestätigt"
+
+msgid "Дата заезда"
+msgstr "Einzugsdatum"
+
+msgid "Дата выезда"
+msgstr "Auszugsdatum"
+
+
+msgid "Управление статусом"
+msgstr "Statusverwaltung"
+
+msgid "Сохранить статус"
+msgstr "Status speichern"
+
+msgid "Отмена сделки"
+msgstr "Vorgang abbrechen"
+
+msgid "Отмена сделки (причина)"
+msgstr "Vorgang abbrechen (Grund)"
+
+msgid "Причина отмены"
+msgstr "Abbruchgrund"
+
+msgid "Отменить сделку"
+msgstr "Vorgang abbrechen"
+
+
+msgid "Проверить документ"
+msgstr "Dokument prüfen"
+
+msgid "Подтвердить"
+msgstr "Bestätigen"
+
+msgid "Отклонить"
+msgstr "Ablehnen"
+
+msgid "Причина отказа / что исправить"
+msgstr "Ablehnungsgrund / was korrigieren"
+
+msgid "Комментарий администратора"
+msgstr "Kommentar des Administrators"
+
+msgid "Документ отклонён"
+msgstr "Dokument abgelehnt"
+
+msgid "Документ подтверждён"
+msgstr "Dokument bestätigt"
+
+msgid "Загружен"
+msgstr "Hochgeladen"
+
+msgid "Проверен"
+msgstr "Geprüft"
+
+
+msgid "Audit trail"
+msgstr "Audit-Protokoll"
+
+msgid "Действие"
+msgstr "Aktion"
+
+msgid "Выполнено"
+msgstr "Ausgeführt"
+
+msgid "Пользователь"
+msgstr "Benutzer"
+
+msgid "Администратор"
+msgstr "Administrator"
+
+msgid "Система"
+msgstr "System"
+
+
+msgid "Следующий шаг"
+msgstr "Nächster Schritt"
+
+msgid "Ожидает действия администратора"
+msgstr "Wartet auf Aktion des Administrators"
+
+msgid "Ожидает действий арендатора"
+msgstr "Wartet auf Aktion des Mieters"
+
+
+msgid "Админ-панель"
+msgstr "Admin-Bereich"
+
+msgid "Управление сделками"
+msgstr "Vorgangsverwaltung"
+
+msgid "Все сделки"
+msgstr "Alle Vorgänge"
+
+msgid "Просмотр сделки"
+msgstr "Vorgang ansehen"
+
+msgid "Удалить объявление"
+msgstr "Anzeige löschen"
+
+msgid "Это действие нельзя отменить"
+msgstr "Diese Aktion kann nicht rückgängig gemacht werden"
+
+msgid "Мои сделки"
+msgstr "Meine Vorgänge"
+
+msgid "Обновлено"
+msgstr "Aktualisiert"
+
+msgid "Резервы, документы, подпись и оплата"
+msgstr "Reservierungen, Dokumente, Unterzeichnung und Zahlung"
+
+msgid "Ожидает подтверждения администратором"
+msgstr "Wartet auf Bestätigung durch den Administrator"
+
+msgid "История пока пуста"
+msgstr "Der Verlauf ist noch leer"
+
+msgid "Обновление сделки"
+msgstr "Vorgang aktualisiert"
+
+
+# ---- deal statuses ----
+msgid "paid"
+msgstr "Bezahlt"
+
+msgid "reserved"
+msgstr "Reserviert"
+
+msgid "ready_to_pay"
+msgstr "Bereit zur Zahlung"
+
+
+# ---- document types ----
+msgid "passport"
+msgstr "Reisepass"
+
+msgid "id"
+msgstr "Ausweis"
+
+msgid "income_proof"
+msgstr "Einkommensnachweis"
+
+msgid "doc_passport"
+msgstr "Ausweis / Reisepass"
+
+msgid "doc_visa"
+msgstr "Visum oder Aufenthaltstitel"
+
+msgid "doc_income"
+msgstr "Einkommensnachweis"
+
+msgid "doc_extra"
+msgstr "Zusätzliches Dokument"
+
+msgid "deal_reserved"
+msgstr "Reserviert"
+
+msgid "deal_docs_pending"
+msgstr "Dokumente werden geprüft"
+
+msgid "deal_docs_verified"
+msgstr "Dokumente bestätigt"
+
+msgid "deal_ready_to_sign"
+msgstr "Bereit zur Unterzeichnung"
+
+msgid "deal_ready_to_pay"
+msgstr "Bereit zur Zahlung"
+
+msgid "deal_paid"
+msgstr "Bezahlt"
+
+msgid "deal_completed"
+msgstr "Abgeschlossen"
+
+msgid "deal_canceled"
+msgstr "Abgebrochen"
+
+msgid "О нас"
+msgstr "Über uns"
+
+msgid "Политика конфиденциальности"
+msgstr "Datenschutzerklärung"
+
+msgid "Пользовательское соглашение"
+msgstr "Nutzungsbedingungen"
+
+msgid "Relovo помогает найти жильё, подходящее под ваш стиль жизни"
+msgstr "Relovo hilft dir, eine Unterkunft zu finden, die zu deinem Lebensstil passt"
+
+msgid "Опишите, как вы живёте и что для вас важно"
+msgstr "Beschreibe, wie du lebst und was dir wichtig ist"
+
+msgid "Получите подходящие варианты жилья"
+msgstr "Erhalte passende Wohnungsangebote"
+
+msgid "Свяжитесь с владельцем и оформите аренду"
+msgstr "Kontaktiere den Vermieter und schließe die Miete ab"
+
+msgid "Почему Relovo"
+msgstr "Warum Relovo"
+
+msgid "Подбор под стиль жизни"
+msgstr "Wohnung passend zu deinem Lebensstil"
+
+msgid "Мы учитываем не только цену и город, но и ваш образ жизни"
+msgstr "Wir berücksichtigen nicht nur Preis und Stadt, sondern auch deinen Lebensstil"
+
+msgid "Безопасно и прозрачно"
+msgstr "Sicher und transparent"
+
+msgid "Проверка пользователей, документы и понятный процесс"
+msgstr "Verifizierung, Dokumente und ein klarer Ablauf"
+
+msgid "Для переезда, а не отпуска"
+msgstr "Für Relocation, nicht für Urlaub"
+
+msgid "Relovo создан для релокации и среднесрочной аренды"
+msgstr "Relovo ist für Umzüge und mittelfristige Vermietung gemacht"
+
+msgid "Пользовательское соглашение"
+msgstr "Nutzungsbedingungen"
+
+msgid "Настоящее соглашение регулирует использование платформы Relovo."
+msgstr "Diese Nutzungsbedingungen regeln die Nutzung der Plattform Relovo."
+
+msgid "1. Общие положения"
+msgstr "1. Allgemeine Bestimmungen"
+
+msgid "Relovo предоставляет онлайн-платформу для поиска и размещения объявлений о жилье."
+msgstr "Relovo stellt eine Online-Plattform zur Suche und Veröffentlichung von Wohnungsanzeigen bereit."
+
+msgid "2. Статус Relovo"
+msgstr "2. Status von Relovo"
+
+msgid "Relovo не является агентством недвижимости, арендодателем или арендатором."
+msgstr "Relovo ist weder Immobilienmakler noch Vermieter oder Mieter."
+
+msgid "Relovo не является стороной договора аренды."
+msgstr "Relovo ist keine Vertragspartei des Mietvertrags."
+
+msgid "3. Ответственность пользователя"
+msgstr "3. Verantwortung des Nutzers"
+
+msgid "Пользователь несёт ответственность за достоверность предоставленных данных и документов."
+msgstr "Der Nutzer ist für die Richtigkeit der bereitgestellten Daten und Dokumente verantwortlich."
+
+msgid "4. Документы и верификация"
+msgstr "4. Dokumente und Verifizierung"
+
+msgid "Relovo вправе запрашивать и проверять документы в рамках работы платформы."
+msgstr "Relovo ist berechtigt, im Rahmen der Plattform Dokumente anzufordern und zu prüfen."
+
+msgid "5. Ограничение ответственности"
+msgstr "5. Haftungsbeschränkung"
+
+msgid "Relovo не несёт ответственности за убытки, возникшие в результате договоров между пользователями."
+msgstr "Relovo haftet nicht für Schäden aus Verträgen zwischen Nutzern."
+
+msgid "Политика конфиденциальности"
+msgstr "Datenschutzerklärung"
+
+msgid "Какие данные мы обрабатываем"
+msgstr "Welche Daten wir verarbeiten"
+
+msgid "Cookies и сессии"
+msgstr "Cookies und Sitzungen"
+
+msgid "Права пользователя"
+msgstr "Rechte der Nutzer"
+
+msgid "Регистрация компании в процессе"
+msgstr "Unternehmensgründung in Vorbereitung"
+
+msgid "Германия"
+msgstr "Deutschland"
+
+msgid "Я принимаю"
+msgstr "Ich akzeptiere"
+
+msgid "Регистрация компании в процессе"
+msgstr "Die Unternehmensregistrierung ist im Gange"
+
+
+msgid "Представлено"
+msgstr "Vertreten durch"
+
+msgid "Имя будет добавлено после регистрации"
+msgstr "Der Name wird nach der Registrierung hinzugefügt"
+
+msgid "Запись в торговом реестре будет добавлена после регистрации"
+msgstr "Der Handelsregistereintrag wird nach der Registrierung hinzugefügt"
+
+msgid "Политика конфиденциальности"
+msgstr "Datenschutzerklärung"
+
+msgid "1. Ответственный за обработку данных"
+msgstr "1. Verantwortlicher für die Datenverarbeitung"
+
+msgid "Адрес будет добавлен после регистрации компании"
+msgstr "Die Adresse wird nach der Unternehmensregistrierung hinzugefügt"
+
+msgid "2. Какие данные мы обрабатываем"
+msgstr "2. Welche Daten wir verarbeiten"
+
+msgid "Имя"
+msgstr "Name"
+
+msgid "Email"
+msgstr "E-Mail-Adresse"
+
+msgid "Пароль (в зашифрованном виде)"
+msgstr "Passwort (in verschlüsselter Form)"
+
+msgid "Тип аккаунта"
+msgstr "Kontotyp"
+
+msgid "3. Цель обработки данных"
+msgstr "3. Zweck der Datenverarbeitung"
+
+msgid "Данные используются для предоставления функциональности платформы и управления аккаунтами."
+msgstr "Die Daten werden zur Bereitstellung der Plattformfunktionen und zur Kontoverwaltung verwendet."
+
+msgid "4. Cookies и сессии"
+msgstr "4. Cookies und Sitzungen"
+
+msgid "Мы используем технически необходимые cookies и сессии."
+msgstr "Wir verwenden technisch notwendige Cookies und Sitzungen."
+
+msgid "5. Передача данных третьим лицам"
+msgstr "5. Weitergabe von Daten an Dritte"
+
+msgid "Мы не передаём персональные данные третьим лицам, за исключением случаев, предусмотренных законом."
+msgstr "Wir geben personenbezogene Daten nicht an Dritte weiter, außer in gesetzlich vorgeschriebenen Fällen."
+
+msgid "6. Права пользователя"
+msgstr "6. Rechte der Nutzer"
+
+msgid "Вы имеете право на доступ, исправление и удаление своих данных."
+msgstr "Sie haben das Recht auf Auskunft, Berichtigung und Löschung Ihrer Daten."
+
+msgid "Relovo вправе изменять условия соглашения без предварительного уведомления."
+msgstr "Relovo behält sich das Recht vor, die Bedingungen der Vereinbarung ohne vorherige Ankündigung zu ändern."
+
+msgid "Изменения условий"
+msgstr "Änderungen der Nutzungsbedingungen"
+
+msgid "Мы учитываем не только город и цену, но и то, как вы живёте: работа, семья, питомцы."
+msgstr "Wir berücksichtigen nicht nur die Stadt und den Preis, sondern auch Ihre Lebensweise: Arbeit, Familie und Haustiere."
+
+msgid "Relovo создан для релокации, а не краткосрочного туризма."
+msgstr "Relovo wurde für Relocation entwickelt, nicht für kurzfristigen Tourismus."
+
+msgid "Заявки на резерв и проверка документов"
+msgstr "Reservierungsanfragen und Dokumentenprüfung"
+
+msgid "Пока нет сделок. Резерв создаётся из карточки объявления кнопкой “Резервировать”."
+msgstr "Derzeit gibt es noch keine Transaktionen. Eine Reservierung wird über die Anzeigenkarte mit der Schaltfläche „Reservieren“ erstellt."
+
+msgid "Резервирование создаёт сделку. Документы и оплата проходят через Relok."
+msgstr "Durch die Reservierung wird eine Transaktion erstellt. Dokumente und Zahlungen werden über Relok abgewickelt."
+
+msgid "Зарезервировать через Relovo"
+msgstr "Über Relovo reservieren"
+
+msgid "Сделки по моим объявлениям"
+msgstr "Transaktionen zu meinen Anzeigen"
+
+msgid "Ваше имя"
+msgstr "Ihr Name"
+
+# de translations for contract_template.html
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Договор аренды (Mietvertrag) — Deal #%(deal_id)s"
+msgstr "Mietvertrag — Deal #%(deal_id)s"
+
+msgid "Договор аренды жилого помещения (Mietvertrag für Wohnraum)"
+msgstr "Mietvertrag für Wohnraum"
+
+msgid "Это шаблон для MVP Relok: текст на русском с немецкими терминами в скобках."
+msgstr "Dies ist eine Vorlage für das Relok-MVP: russischer Text mit deutschen Begriffen in Klammern."
+
+msgid "Не является юридической консультацией (keine Rechtsberatung)."
+msgstr "Keine Rechtsberatung (keine Rechtsberatung)."
+
+msgid "Сделка / Deal:"
+msgstr "Deal:"
+
+msgid "№ %(deal_id)s"
+msgstr "Nr. %(deal_id)s"
+
+msgid "Объект / Objekt:"
+msgstr "Objekt:"
+
+msgid "Период аренды (Mietzeit):"
+msgstr "Mietzeit:"
+
+msgid "Арендная плата (Miete):"
+msgstr "Miete:"
+
+msgid "EUR / месяц (pro Monat)"
+msgstr "EUR / Monat (pro Monat)"
+
+msgid "1. Стороны договора (Vertragsparteien)"
+msgstr "1. Vertragsparteien"
+
+msgid "Арендатор (Mieter):"
+msgstr "Mieter:"
+
+msgid "Владелец (Vermieter):"
+msgstr "Vermieter:"
+
+msgid "E-mail:"
+msgstr "E-Mail:"
+
+msgid "2. Предмет договора (Mietgegenstand)"
+msgstr "2. Mietgegenstand"
+
+msgid "2.1. Владелец (Vermieter) предоставляет, а Арендатор (Mieter) принимает в аренду жилое помещение (Wohnraum) по объявлению, указанному выше (Objekt)."
+msgstr "2.1. Der Vermieter stellt dem Mieter den oben bezeichneten Wohnraum (Objekt) zur Miete zur Verfügung."
+
+msgid "2.2. Состояние и комплектность передаются по акту приёма-передачи (Übergabeprotokoll), который стороны могут подписать отдельно и загрузить в Relok."
+msgstr "2.2. Zustand und Inventar werden in einem Übergabeprotokoll festgehalten, das die Parteien separat unterzeichnen und in Relok hochladen können."
+
+msgid "3. Срок аренды (Mietdauer)"
+msgstr "3. Mietdauer"
+
+msgid "3.1. Аренда является срочной (befristet) и действует в период, указанный в разделе «Сделка / Deal»."
+msgstr "3.1. Das Mietverhältnis ist befristet und gilt für den im Abschnitt „Deal“ angegebenen Zeitraum."
+
+msgid "3.2. Продление возможно по соглашению сторон (nach Vereinbarung)."
+msgstr "3.2. Eine Verlängerung ist nach Vereinbarung möglich."
+
+msgid "4. Арендная плата и платежи (Miete und Zahlungen)"
+msgstr "4. Miete und Zahlungen"
+
+msgid "4.1. Арендная плата (Kaltmiete / Miete) составляет сумму, указанную в разделе «Арендная плата (Miete)»."
+msgstr "4.1. Die Miete (Kaltmiete) entspricht dem im Abschnitt „Miete“ angegebenen Betrag."
+
+msgid "4.2. Дополнительные расходы (Nebenkosten), коммунальные платежи (Betriebskosten), интернет (Internet) и прочие услуги согласуются сторонами отдельно и фиксируются в переписке/документах сделки."
+msgstr "4.2. Nebenkosten, Betriebskosten, Internet und sonstige Leistungen werden separat vereinbart und in der Deal-Korrespondenz/den Dokumenten festgehalten."
+
+msgid "4.3. Способ и сроки оплаты (Zahlungsweise / Fälligkeit) — по отдельной договорённости."
+msgstr "4.3. Zahlungsweise und Fälligkeit werden separat vereinbart."
+
+msgid "5. Обеспечительный платёж (Kaution)"
+msgstr "5. Kaution"
+
+msgid "5.1. Если стороны согласовали залог (Kaution), его размер и условия возврата фиксируются отдельным документом/пунктом."
+msgstr "5.1. Sofern eine Kaution vereinbart wird, werden Höhe und Rückzahlungsbedingungen in einem separaten Dokument/einer separaten Klausel festgelegt."
+
+msgid "6. Права и обязанности сторон (Rechte und Pflichten)"
+msgstr "6. Rechte und Pflichten"
+
+msgid "6.1. Арендатор (Mieter) обязуется бережно пользоваться жильём, соблюдать правила дома (Hausordnung), не нарушать права соседей (Nachbarn) и правила тишины (Ruhezeiten)."
+msgstr "6.1. Der Mieter verpflichtet sich, die Wohnung pfleglich zu behandeln, die Hausordnung einzuhalten sowie Nachbarn und Ruhezeiten zu respektieren."
+
+msgid "6.2. Владелец (Vermieter) обязуется обеспечить возможность пользования жильём в согласованный срок и предоставить ключи (Schlüssel)."
+msgstr "6.2. Der Vermieter verpflichtet sich, die Nutzung der Wohnung im vereinbarten Zeitraum zu ermöglichen und die Schlüssel zu übergeben."
+
+msgid "6.3. Мелкий текущий ремонт (Kleinreparaturen) и ответственность за повреждения (Schäden) — по отдельной договорённости и общим принципам разумности."
+msgstr "6.3. Kleinreparaturen und die Haftung für Schäden richten sich nach separater Vereinbarung und allgemeinen Grundsätzen der Angemessenheit."
+
+msgid "7. Расторжение (Kündigung) и отмена"
+msgstr "7. Kündigung und Stornierung"
+
+msgid "7.1. Досрочное расторжение (Kündigung) возможно по взаимному согласию (einvernehmlich) либо в случаях, предусмотренных законом (gesetzlich)."
+msgstr "7.1. Eine vorzeitige Kündigung ist einvernehmlich oder in gesetzlich vorgesehenen Fällen möglich."
+
+msgid "7.2. Правила отмены и возвратов (Stornierung / Rückerstattung) фиксируются в условиях сделки Relok и/или отдельном соглашении сторон."
+msgstr "7.2. Stornierungs- und Rückerstattungsregeln werden in den Relok-Deal-Bedingungen und/oder in einer separaten Vereinbarung der Parteien festgehalten."
+
+msgid "8. Персональные данные (Datenschutz)"
+msgstr "8. Datenschutz"
+
+msgid "8.1. Стороны соглашаются, что обмен документами через Relok осуществляется для исполнения сделки (Vertragserfüllung). Relok хранит файлы и контрольные суммы (Hash / SHA-256) для подтверждения подлинности документов."
+msgstr "8.1. Die Parteien sind sich einig, dass der Dokumentenaustausch über Relok der Vertragserfüllung dient. Relok speichert Dateien und Prüfsummen (Hash / SHA-256) zur Bestätigung der Dokumentenintegrität."
+
+msgid "9. Прочие условия (Sonstiges)"
+msgstr "9. Sonstiges"
+
+msgid "9.1. Этот договор оформляется в электронном виде (elektronisch) для скачивания и ручной подписи (handschriftliche Unterschrift)."
+msgstr "9.1. Dieser Vertrag wird elektronisch zur Verfügung gestellt, zum Herunterladen und zur handschriftlichen Unterschrift."
+
+msgid "9.2. Любые приложения, переписка и дополнительные документы, загруженные в сделку Relok, могут являться частью договорённостей сторон."
+msgstr "9.2. Anhänge, Korrespondenz und zusätzliche Dokumente, die in den Relok-Deal hochgeladen werden, können Bestandteil der Vereinbarungen der Parteien sein."
+
+msgid "10. Подписи (Unterschriften)"
+msgstr "10. Unterschriften"
+
+msgid "Подписанные версии договора стороны загружают обратно в сделку. Relok показывает контрольную сумму (SHA-256), чтобы обе стороны могли убедиться, что видят один и тот же файл."
+msgstr "Die Parteien laden die unterschriebenen Versionen des Vertrags wieder in den Deal hoch. Relok zeigt eine Prüfsumme (SHA-256) an, damit beide Parteien prüfen können, dass sie dieselbe Datei sehen."
+
+msgid "Арендатор (Mieter): %(name)s"
+msgstr "Mieter: %(name)s"
+
+msgid "Дата (Datum): ____ / ____ / ______"
+msgstr "Datum: ____ / ____ / ______"
+
+msgid "Владелец (Vermieter): %(name)s"
+msgstr "Vermieter: %(name)s"
+
+# ===== Deal / Dates =====
+msgid "Ожидает подтверждения"
+msgstr "Wartet auf Bestätigung"
+
+msgid "Подтвердить даты"
+msgstr "Daten bestätigen"
+
+msgid "Даты аренды подтверждены"
+msgstr "Mietdaten bestätigt"
+
+msgid "Ожидает подтверждения администратором"
+msgstr "Wartet auf Bestätigung durch den Administrator"
+
+msgid "Ожидает подтверждения арендодателем или администратором"
+msgstr "Wartet auf Bestätigung durch Vermieter oder Administrator"
+
+# ===== Contract =====
+msgid "Договор ещё не загружен администратором"
+msgstr "Der Vertrag wurde noch nicht vom Administrator hochgeladen"
+
+msgid "Загрузить договор (PDF, без подписи)"
+msgstr "Vertrag hochladen (PDF, ohne Unterschrift)"
+
+msgid "Заменить договор (PDF, без подписи)"
+msgstr "Vertrag ersetzen (PDF, ohne Unterschrift)"
+
+msgid "Подписанные версии"
+msgstr "Unterzeichnete Versionen"
+
+msgid "Загрузить подписанный договор (PDF)"
+msgstr "Unterzeichneten Vertrag hochladen (PDF)"
+
+msgid "Загружай PDF с подписью. Файл будет сохранён и доступен администратору."
+msgstr "Bitte lade die unterschriebene PDF hoch. Die Datei wird gespeichert und ist für den Administrator sichtbar."
+
+msgid "Это будет базовый договор, который стороны подпишут и загрузят подписанные версии."
+msgstr "Dies ist der Basisvertrag, den die Parteien unterschreiben und anschließend hochladen."
+
+# ===== Audit / Status =====
+msgid "Договор загружен администратором"
+msgstr "Vertrag wurde vom Administrator hochgeladen"
+
+msgid "Загружен подписанный договор"
+msgstr "Unterzeichneter Vertrag hochgeladen"
+
+msgid "Обновление сделки"
+msgstr "Aktualisierung der Transaktion"
+
+# ===== Contract =====
+msgid "Ожидайте: администратор загрузит договор"
+msgstr "Bitte warten: Der Administrator lädt den Vertrag hoch"
+
+# ===== Documents / Types =====
+msgid "Документ собственности"
+msgstr "Eigentumsnachweis"
+
+msgid "ID владельца"
+msgstr "Ausweisdokument des Vermieters"
+
+msgid "Дополнительный документ"
+msgstr "Zusätzliches Dokument"
+
+# ===== Contract =====
+msgid "Договор (PDF, без подписи)"
+msgstr "Vertrag (PDF, ohne Unterschrift)"
+
+msgid "Отпечаток SHA-256"
+msgstr "SHA-256-Fingerabdruck"
+
+msgid "Подписанные версии"
+msgstr "Unterzeichnete Versionen"
+
+msgid "Ещё не загружено"
+msgstr "Noch nicht hochgeladen"
+
+msgid "Загружено"
+msgstr "Hochgeladen"
+
+msgid "Загрузить"
+msgstr "Hochladen"
+
+msgid "Тема сайта"
+msgstr "Website-Design"
+
+msgid "Описание пока не добавлено"
+msgstr "Beschreibung wurde noch nicht hinzugefügt"
+
+msgid "Редактировать описание"
+msgstr "Beschreibung bearbeiten"
+
+msgid "Введите описание..."
+msgstr "Beschreibung eingeben..."
+
+msgid "Как работает Relovo"
+msgstr "Wie Relovo funktioniert"
+
+msgid "1. Опиши, как ты живёшь"
+msgstr "1. Beschreibe, wie du lebst"
+
+msgid "Введи свои предпочтения: работа, семья, питомцы — AI сам подберёт варианты."
+msgstr "Gib deine Präferenzen ein: Arbeit, Familie, Haustiere — die KI wählt passende Optionen aus."
+
+msgid "2. Получи персональные рекомендации"
+msgstr "2. Erhalte personalisierte Empfehlungen"
+
+msgid "Наш AI анализирует тысячи объявлений и выдаёт жильё, подходящее под твой стиль жизни."
+msgstr "Unsere KI analysiert Tausende von Anzeigen und schlägt Wohnungen vor, die zu deinem Lebensstil passen."
+
+msgid "3. Оформи аренду онлайн"
+msgstr "3. Miete online abschließen"
+
+msgid "Подпиши цифровой договор, пройди верификацию и оплати через защищённый escrow."
+msgstr "Unterschreibe einen digitalen Vertrag, durchlaufe die Verifizierung und zahle über ein sicheres Escrow-System."
+
+msgid "О Relovo"
+msgstr "Über Relovo"
+
+msgid "это платформа для поиска и аренды жилья\n      для людей, которые переезжают в другой город или страну."
+msgstr "ist eine Plattform zur Suche und Anmietung von Wohnraum für Menschen, die in eine andere Stadt oder ein anderes Land umziehen."
+
+msgid "Мы создали Relovo, потому что переезд — это стресс:\n      недоверие, документы, отсутствие регистрации, непонятные условия.\n      Наша цель — сделать аренду прозрачной, безопасной и удобной."
+msgstr "Wir haben Relovo entwickelt, weil ein Umzug stressig ist: fehlendes Vertrauen, Bürokratie, keine Anmeldung und unklare Bedingungen. Unser Ziel ist es, Mieten transparent, sicher und bequem zu machen."
+
+msgid "Чем Relovo отличается"
+msgstr "Was Relovo unterscheidet"
+
+msgid "✔ Подбор жилья под стиль жизни, а не только по цене"
+msgstr "✔ Wohnungsauswahl nach Lebensstil, nicht nur nach Preis"
+
+msgid "✔ Проверка пользователей и документов"
+msgstr "✔ Prüfung von Nutzern und Dokumenten"
+
+msgid "✔ Контролируемый процесс сделки"
+msgstr "✔ Kontrollierter Transaktionsprozess"
+
+msgid "✔ Подходит для релокации и среднесрочной аренды"
+msgstr "✔ Geeignet für Relocation und mittelfristige Mieten"
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "❓ Relovo — это агентство?"
+msgstr "❓ Ist Relovo eine Agentur?"
+
+msgid "Нет. Relovo — это онлайн-платформа, которая помогает сторонам найти друг друга и провести сделку."
+msgstr "Nein. Relovo ist eine Online-Plattform, die beiden Parteien hilft, sich zu finden und den Vertrag abzuschließen."
+
+msgid "❓ Кто отвечает за договор аренды?"
+msgstr "❓ Wer ist für den Mietvertrag verantwortlich?"
+
+msgid "Договор заключается напрямую между арендатором и владельцем."
+msgstr "Der Vertrag wird direkt zwischen Mieter und Eigentümer abgeschlossen."
+
+msgid "❓ Проверяет ли Relovo пользователей?"
+msgstr "❓ Überprüft Relovo die Nutzer?"
+
+msgid "Да, мы используем верификацию документов и ручную проверку в рамках сделки."
+msgstr "Ja, wir nutzen eine Dokumentenverifizierung und manuelle Prüfungen im Rahmen der Transaktion."
+
+msgid "❓ Можно ли пользоваться Relovo бесплатно?"
+msgstr "❓ Kann man Relovo kostenlos nutzen?"
+
+msgid "Регистрация бесплатна. Некоторые услуги могут быть платными."
+msgstr "Die Registrierung ist kostenlos. Einige Dienste können kostenpflichtig sein."
+
+msgid "Войти, чтобы зарезервировать"
+msgstr "Anmelden, um zu reservieren"
+
+msgid "Текущие фото (перетащи, чтобы поменять порядок)"
+msgstr "Aktuelle Fotos (per Drag & Drop neu anordnen)"
+
+
+
+
+
+
+

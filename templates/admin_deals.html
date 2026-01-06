@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-section">
+  <div class="page-card">
+    <h1 class="page-title">
+      Admin • {{ _("Все сделки") }}
+    </h1>
+
+    <div class="admin-filters">
+      <a class="fbtn {% if not active_status %}search-btn{% endif %}"
+         href="/admin/deals">
+        {{ _("Все") }}
+      </a>
+
+      {% for s, label in statuses %}
+        <a class="fbtn {% if active_status==s %}search-btn{% endif %}"
+           href="/admin/deals?status={{ s }}">
+          {{ _(s) }}
+        </a>
+      {% endfor %}
+    </div>
+
+    {% if not deals %}
+      <p style="opacity:.7;">
+        {{ _("Сделок пока нет.") }}
+      </p>
+    {% else %}
+      <div class="deal-grid">
+        {% for d in deals %}
+          <a class="deal-card" href="/admin/deal/{{ d.id }}">
+
+            <div class="deal-top">
+              <div class="deal-title">
+                #{{ d.id }} • {{ d.listing.title }}
+              </div>
+              <div class="deal-status status-{{ d.status }}">
+                {{ _(d.status) }}
+              </div>
+            </div>
+
+            <div class="deal-meta">
+              <div>📍 {{ d.listing.city }}</div>
+              <div>💶 {{ d.listing.price }} €</div>
+            </div>
+
+            <div class="deal-sub">
+              {{ _("Арендатор") }}: {{ d.tenant.email }}
+              •
+              {{ _("Владелец") }}: {{ d.landlord.email }}
+            </div>
+
+            <div class="deal-time">
+              {{ _("Обновлено") }}:
+              {{ d.updated_at.strftime("%d.%m.%Y %H:%M") }}
+            </div>
+
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endblock %}

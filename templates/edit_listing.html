@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-section">
+  <div class="page-card page-card-narrow">
+    <h2 class="page-title">{{ _("Редактировать объявление") }}</h2>
+
+    <form method="POST"
+      enctype="multipart/form-data"
+      class="listing-form"
+      id="edit-listing-form">
+
+      <div class="input-group">
+        <label>{{ _("Название") }}</label>
+        <input type="text" name="title" value="{{ listing.title }}" required>
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <label>{{ _("Город") }}</label>
+          <input type="text" name="city" value="{{ listing.city }}" required>
+        </div>
+        <div class="input-group">
+          <label>{{ _("Цена (€ / мес)") }}</label>
+          <input type="number" name="price" value="{{ listing.price }}" required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>{{ _("Тип жилья") }}</label>
+        <select name="type" required>
+          <option value="apartment" {% if listing.type == "apartment" %}selected{% endif %}>{{ _("Квартира") }}</option>
+          <option value="room" {% if listing.type == "room" %}selected{% endif %}>{{ _("Комната") }}</option>
+          <option value="house" {% if listing.type == "house" %}selected{% endif %}>{{ _("Дом") }}</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label>{{ _("Описание") }}</label>
+        <textarea name="description" rows="4">{{ listing.description }}</textarea>
+      </div>
+
+      <div class="input-group">
+        <label>{{ _("Добавить ещё фото") }}</label>
+
+        <div class="photo-upload" id="photo-upload">
+          <div class="drop-zone" id="drop-zone">
+            <div class="drop-icon">📷</div>
+            <div class="drop-text">
+              <strong>{{ _("Перетащи сюда фото") }}</strong><br>
+              {{ _("или нажми, чтобы выбрать") }}
+            </div>
+
+            <!-- ВАЖНО: исправлено имя поля -->
+            <input type="file" id="file-input" name="images[]" accept="image/*" multiple>
+          </div>
+
+          <div class="preview-grid" id="preview-grid"></div>
+        </div>
+      </div>
+      
+      {% if listing.images %}
+      <div class="input-group">
+        <label>{{ _("Текущие фото (перетащи, чтобы поменять порядок)") }}</label>
+
+        <div class="preview-grid" id="existing-grid">
+          {% for img in listing.images %}
+          <div class="preview-item existing" data-img-id="{{ img.id }}" style="cursor: grab;">
+            <img src="/static/uploads/{{ img.filename }}" alt="">
+            <button type="button" class="delete-img-btn"
+                    onclick="location.href='/delete-image/{{ img.id }}'">
+              {{ _('Удалить') }}
+            </button>
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+      {% endif %}
+
+
+      <button type="submit" class="primary-btn full-btn">{{ _("Сохранить изменения") }}</button>
+    </form>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+
+<script>
+  const grid = document.getElementById("existing-grid");
+  if (grid) {
+    new Sortable(grid, { animation: 150 });
+  }
+
+  const form = document.getElementById("edit-listing-form");
+
+  if (form && grid) {
+    form.addEventListener("submit", async function (e) {
+      // если фото есть — сначала сохраняем порядок
+      const items = Array.from(
+        document.querySelectorAll("#existing-grid .existing")
+      );
+
+      if (items.length > 0) {
+        e.preventDefault(); // стопаем обычный submit
+
+        const orderedIds = items.map(el => Number(el.dataset.imgId));
+
+        try {
+          const res = await fetch(
+            "/listing/{{ listing.id }}/images/reorder",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ ordered_ids: orderedIds })
+            }
+          );
+
+          if (!res.ok) {
+            alert("❌ Fehler beim Speichern der Bildreihenfolge");
+            return;
+          }
+
+          // порядок сохранён → теперь реально отправляем форму
+          form.submit();
+
+        } catch (err) {
+          alert("❌ Netzwerkfehler");
+        }
+      }
+    });
+  }
+</script>
+
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+    <meta charset="UTF-8" />
+    <title>{{ _("Wilkommen bei Relovo") }}</title>
+
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="icon" type="image/png" href="/static/favicon.png" sizes="512x512">
+</head>
+
+<body class="auth-bg">
+
+    <a href="/" class="logo-top">
+        <img src="/static/relovo_logo_yellow.png">
+    </a>
+
+    <div class="auth-card small">
+
+        <h2 class="auth-title">{{ _("Войти в аккаунт") }}</h2>
+
+        <form method="POST" class="auth-form">
+
+            <div class="input-group">
+                <label>{{ _("Email") }}</label>
+                <input name="email" type="email" placeholder="{{ _('Введите email') }}" required />
+            </div>
+
+            <div class="input-group password-holder">
+                <label>{{ _("Пароль") }}</label>
+                <input name="password" id="login_password" type="password" placeholder="{{ _('Введите пароль') }}" required />
+                <span class="toggle-pass" onclick="togglePassword('login_password', this)">{{ _("Показать") }}</span>
+            </div>
+
+            <button type="submit" class="primary-btn full-btn">{{ _("Войти") }}</button>
+        </form>
+
+        <p class="auth-switch">
+            {{ _("Нет аккаунта?") }}
+            <a href="/register">{{ _("Создать") }}</a>
+        </p>
+
+    </div>
+
+<script>
+function togglePassword(id, el) {
+    const field = document.getElementById(id);
+    if (field.type === "password") {
+        field.type = "text";
+        el.innerText = "{{ _('Скрыть') }}";
+    } else {
+        field.type = "password";
+        el.innerText = "{{ _('Показать') }}";
+    }
+}
+</script>
+
+</body>
+</html>

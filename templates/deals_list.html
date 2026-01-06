@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-section">
+  <div class="page-card">
+
+    <h1 class="page-title">
+      {% if role == "landlord" %}
+        {{ _("Сделки по моим объявлениям") }}
+      {% else %}
+        {{ _("Мои сделки") }}
+      {% endif %}
+    </h1>
+
+    {% if not deals %}
+      <p style="opacity:.75;">
+        {{ _("Пока нет сделок. Резерв создаётся из карточки объявления кнопкой “Резервировать”.") }}
+      </p>
+    {% else %}
+      <div class="deal-grid">
+        {% for d in deals %}
+          <a class="deal-card" href="/deal/{{ d.id }}">
+
+            <div class="deal-top">
+              <div class="deal-title">{{ d.listing.title }}</div>
+              <div class="deal-status status-{{ d.status }}">
+                {{ _(d.status) }}
+              </div>
+            </div>
+
+            <div class="deal-meta">
+              <div>📍 {{ d.listing.city }}</div>
+              <div>💶 {{ d.listing.price }} €</div>
+            </div>
+
+            <div class="deal-sub">
+              {% if role == "landlord" %}
+                {{ _("Арендатор") }}: {{ d.tenant.email }}
+              {% else %}
+                {{ _("Владелец") }}: {{ d.landlord.email }}
+              {% endif %}
+            </div>
+
+            <div class="deal-time">
+              {{ _("Обновлено") }}:
+              {{ d.updated_at.strftime("%d.%m.%Y %H:%M") }}
+            </div>
+
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% endblock %}

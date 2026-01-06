@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="page-title">{{ _("Мои объявления") }}</h1>
+
+    <div class="relok-grid">
+        {% for item in listings %}
+        <div class="relok-card">
+            <a href="/listing/{{ item.id }}">
+                {% if item.image_filenames %}
+                    <img src="/static/uploads/{{ item.image_filenames[0] }}" class="relok-img">
+                {% else %}
+                    <img src="/static/no_image.png" class="relok-img">
+                {% endif %}
+            </a>
+
+            <div class="relok-info">
+                <h3 class="relok-title">{{ item.title }}</h3>
+                <p class="relok-sub">{{ item.city }} • {{ item.type }}</p>
+                <p class="relok-price">€{{ item.price }}/{{ _("мес") }}</p>
+
+                <div class="relok-actions">
+                    <a href="/edit-listing/{{ item.id }}" class="relok-btn-edit">{{ _("Редактировать") }}</a>
+                    <a href="/delete-listing/{{ item.id }}" class="relok-btn-delete">{{ _("Удалить") }}</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

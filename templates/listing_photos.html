@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ listing.title }} — {{ _("Фотографии") }} — Relovo</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" type="image/png" href="/static/favicon.png" sizes="512x512">
+</head>
+<body>
+
+<header class="navbar">
+  <span style="font-size:22px; color:#6A39FF; font-weight:700;">Relovo</span>
+  <nav>
+    <a href="/listings">{{ _("Объявления") }}</a>
+    {% if session.get("user_id") %}
+      <a href="/dashboard">{{ _("Личный кабинет") }}</a>
+      <a href="/logout" class="nav-login-btn">{{ _("Выйти") }}</a>
+    {% else %}
+      <a href="/login" class="nav-login-btn">{{ _("Войти") }}</a>
+    {% endif %}
+  </nav>
+</header>
+
+<div class="container">
+  <h1 style="margin-bottom: 10px;">{{ _("Все фотографии") }}</h1>
+  <p class="city" style="margin-top:0;">
+    <a href="/listing/{{ listing.id }}" style="color:#6C3BFF; text-decoration:none;">← {{ _("Назад к объявлению") }}</a>
+  </p>
+
+  <div class="listing-gallery" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
+    {% for img in images %}
+      <img
+        src="/static/uploads/{{ img.filename }}"
+        class="gallery-img"
+        style="height: 190px; object-fit: cover; cursor: pointer;"
+        onclick="openSlider({{ loop.index0 }})"
+      >
+    {% endfor %}
+  </div>
+</div>
+
+<!-- SLIDER -->
+<div id="slider" class="slider-overlay">
+  <span class="slider-close" onclick="closeSlider()">×</span>
+  <button class="slider-arrow left" onclick="prevSlide()">‹</button>
+  <img id="sliderImage" class="slider-image">
+  <button class="slider-arrow right" onclick="nextSlide()">›</button>
+</div>
+
+<script>
+const images = [
+  {% for img in images %}
+    "/static/uploads/{{ img.filename }}",
+  {% endfor %}
+];
+
+let currentIndex = 0;
+
+function openSlider(index) {
+  currentIndex = index;
+  document.getElementById("sliderImage").src = images[currentIndex];
+  document.getElementById("slider").classList.add("active");
+}
+
+function closeSlider() {
+  document.getElementById("slider").classList.remove("active");
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % images.length;
+  document.getElementById("sliderImage").src = images[currentIndex];
+}
+
+function prevSlide() {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  document.getElementById("sliderImage").src = images[currentIndex];
+}
+</script>
+
+</body>
+</html>

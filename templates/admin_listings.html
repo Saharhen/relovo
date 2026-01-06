@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ _("Объявления") }} — Admin</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="/" class="logo-link"
+       style="font-size:22px; color:#6A39FF; font-weight:700; text-decoration:none;">
+        Relok
+    </a>
+
+    <nav class="nav-links">
+        <a href="/admin/listings">{{ _("Объявления") }}</a>
+        <a href="/admin/deals">{{ _("Сделки") }}</a>
+        <a href="/logout" class="nav-login-btn">{{ _("Выйти") }}</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <h1>{{ _("Объявления") }}</h1>
+
+    <div class="listings-grid">
+        {% for item in listings %}
+        <div class="listing-card">
+
+            {% if item.image_filenames %}
+                <img src="/static/uploads/{{ item.image_filenames[0] }}"
+                     class="listing-img">
+            {% endif %}
+
+            <div class="listing-info">
+                <h3>{{ item.title }}</h3>
+                <p class="city">
+                    {{ item.city }} • €{{ item.price }}
+                </p>
+
+                <div class="admin-actions">
+                    <form method="POST"
+                        action="/admin/listing/{{ item.id }}/delete"
+                        data-confirm="{{ _('Удалить объявление? Это действие нельзя отменить.') }}"
+                        onsubmit="return confirm(this.dataset.confirm);">
+                        <button class="danger-btn">
+                            🗑 {{ _("Удалить объявление") }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+</body>
+</html>

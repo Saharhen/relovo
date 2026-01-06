@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-section">
+  <div class="page-card page-card-narrow">
+
+    <div class="deal-header">
+      <div>
+        <h1 style="margin:0 0 6px;">
+          Admin • {{ _("Сделка") }} #{{ deal.id }}
+        </h1>
+
+        <div style="opacity:.75;">
+          {{ deal.listing.title }} • {{ deal.listing.city }} • {{ deal.listing.price }} €
+        </div>
+
+        <div style="opacity:.75; margin-top:6px;">
+          Tenant: {{ deal.tenant.email }} • Landlord: {{ deal.landlord.email }}
+        </div>
+      </div>
+
+      <div class="deal-status-badge status-{{ deal.status }}">
+        {{ _(deal.status) }}
+      </div>
+    </div>
+
+    <!-- RENTAL DATES -->
+    <div class="deal-block">
+      <h3 style="margin:0 0 12px;">{{ _("Период аренды") }}</h3>
+
+      {% if deal.start_date and deal.end_date %}
+        <div style="margin-bottom:10px;">
+          {{ deal.start_date.strftime("%d.%m.%Y") }}
+          →
+          {{ deal.end_date.strftime("%d.%m.%Y") }}
+        </div>
+
+        {% if not deal.dates_confirmed %}
+          <form method="POST"
+                action="/admin/deal/{{ deal.id }}/confirm-dates">
+            <button class="primary-btn" type="submit">
+              {{ _("Подтвердить даты") }}
+            </button>
+          </form>
+        {% else %}
+          <span class="doc-status status-approved">
+            {{ _("Даты подтверждены") }}
+          </span>
+        {% endif %}
+      {% else %}
+        <div style="opacity:.7;">
+          {{ _("Арендатор ещё не выбрал даты") }}
+        </div>
+      {% endif %}
+    </div>
+
+    <!-- STATUS MANAGEMENT -->
+    <div class="deal-block">
+      <h3 style="margin:0 0 12px;">{{ _("Управление статусом") }}</h3>
+
+      <form method="POST"
+            action="/admin/deal/{{ deal.id }}/status"
+            class="admin-status-form">
+
+        <div class="input-row">
+          <div class="input-group">
+            <label>{{ _("Статус сделки") }}</label>
+            <select name="status">
+              {% for s, label in statuses %}
+                <option value="{{ s }}"
+                        {% if deal.status == s %}selected{% endif %}>
+                  {{ _(label) }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="input-group" style="align-self:flex-end;">
+            <button class="primary-btn" type="submit">
+              {{ _("Сохранить") }}
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <form method="POST"
+            action="/admin/deal/{{ deal.id }}/cancel"
+            class="admin-cancel-form">
+
+        <div class="input-row">
+          <div class="input-group">
+            <label>{{ _("Отмена сделки (причина)") }}</label>
+            <input name="reason"
+                   placeholder="{{ _('Напр.: документ не прошёл проверку') }}">
+          </div>
+
+          <div class="input-group" style="align-self:flex-end;">
+            <button class="primary-btn"
+                    type="submit"
+                    style="background:#e83535;">
+              {{ _("Отменить") }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- CONTRACT -->
+    <div class="deal-block">
+      <h3 style="margin:0 0 12px;">{{ _("Договор") }}</h3>
+
+      {% if contract %}
+        <div style="margin-bottom:10px;">
+          📄 <b>{{ _("Договор (PDF, без подписи)") }}</b>
+          — <a href="/static/{{ contract.unsigned_filename }}" target="_blank">{{ _("Открыть") }}</a>
+        </div>
+
+        {% set tenant_signed = signed_map.get("tenant") %}
+        {% set landlord_signed = signed_map.get("landlord") %}
+
+        <div style="margin-top:12px;">
+          <b>{{ _("Подписанные версии") }}</b>
+        </div>
+
+        <div class="docs-list" style="margin-top:10px;">
+          <div class="doc-item">
+            <div class="doc-main">
+              <div class="doc-title">
+                tenant
+                {% if tenant_signed %}
+                  <span class="doc-status status-approved">{{ _("Загружено") }}</span>
+                {% else %}
+                  <span class="doc-status status-pending">{{ _("Ещё не загружено") }}</span>
+                {% endif %}
+              </div>
+
+              {% if tenant_signed %}
+                <a class="doc-link" href="/static/{{ tenant_signed.filename }}" target="_blank">
+                  {{ _("Открыть") }}
+                </a>
+              {% else %}
+                <span style="opacity:.7;">—</span>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="doc-item">
+            <div class="doc-main">
+              <div class="doc-title">
+                landlord
+                {% if landlord_signed %}
+                  <span class="doc-status status-approved">{{ _("Загружено") }}</span>
+                {% else %}
+                  <span class="doc-status status-pending">{{ _("Ещё не загружено") }}</span>
+                {% endif %}
+              </div>
+
+              {% if landlord_signed %}
+                <a class="doc-link" href="/static/{{ landlord_signed.filename }}" target="_blank">
+                  {{ _("Открыть") }}
+                </a>
+              {% else %}
+                <span style="opacity:.7;">—</span>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      {% else %}
+        <p style="opacity:.7; margin:0;">
+          {{ _("Договор ещё не загружен администратором") }}
+        </p>
+      {% endif %}
+    </div>
+
+    <!-- DOCUMENTS -->
+    <div class="deal-block">
+      <h3 style="margin:0 0 12px;">{{ _("Документы") }}</h3>
+
+      <div class="docs-list">
+        {% for doc in docs %}
+          <div class="doc-item">
+
+            <div class="doc-main">
+              <div class="doc-title">
+                {{ doc.party }} • {{ _(doc.doc_type) }}
+                <span class="doc-status status-{{ doc.status }}">
+                  {{ _(doc.status) }}
+                </span>
+              </div>
+
+              <a class="doc-link"
+                 href="/static/{{ doc.filename }}"
+                 target="_blank">
+                {{ _("Открыть") }}
+              </a>
+            </div>
+
+            <div class="doc-time">
+              {{ _("Загружен") }}:
+              {{ doc.created_at.strftime("%d.%m.%Y %H:%M") }}
+
+              {% if doc.reviewed_at %}
+                • {{ _("Проверен") }}:
+                {{ doc.reviewed_at.strftime("%d.%m.%Y %H:%M") }}
+              {% endif %}
+            </div>
+
+            {% if doc.note %}
+              <div class="doc-note">
+                {{ _("Комментарий") }}: {{ doc.note }}
+              </div>
+            {% endif %}
+
+            <div class="admin-doc-actions">
+              <form method="POST"
+                    action="/admin/document/{{ doc.id }}/review">
+                <input type="hidden" name="decision" value="approved">
+                <button class="primary-btn" type="submit">
+                  {{ _("Подтвердить") }}
+                </button>
+              </form>
+
+              <form method="POST"
+                    action="/admin/document/{{ doc.id }}/review">
+                <input type="hidden" name="decision" value="rejected">
+                <input name="note"
+                       placeholder="{{ _('Причина отказа / что исправить') }}">
+                <button class="primary-btn"
+                        type="submit"
+                        style="background:#e83535;">
+                  {{ _("Отклонить") }}
+                </button>
+              </form>
+            </div>
+
+          </div>
+        {% endfor %}
+
+        {% if not docs %}
+          <p style="opacity:.7;">
+            {{ _("Документов пока нет.") }}
+          </p>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- AUDIT -->
+    <div class="deal-block">
+      <h3 style="margin:0 0 12px;">Audit trail</h3>
+
+      <div class="audit-list">
+        {% for a in audit_log %}
+          <div class="audit-item">
+            <div class="audit-line">
+              <b>{{ a.action }}</b>
+              <span style="opacity:.65;">
+                — {{ a.actor.email }}
+              </span>
+            </div>
+
+            {% if a.meta %}
+              <div class="audit-meta">{{ a.meta }}</div>
+            {% endif %}
+
+            <div class="audit-time">
+              {{ a.created_at.strftime("%d.%m.%Y %H:%M") }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

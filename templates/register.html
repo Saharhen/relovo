@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ _("Wilkommen bei Relovo") }}</title>
+
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="icon" type="image/png" href="/static/favicon.png" sizes="512x512">
+</head>
+
+<body class="auth-bg">
+
+<a href="/" class="logo-top">
+    <img src="/static/relovo_logo_yellow.png" alt="Relovo">
+</a>
+
+<div class="auth-card small">
+
+    <h2 class="auth-title">{{ _("Создать аккаунт") }}</h2>
+
+    {% if error %}
+        <div class="auth-error">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <form method="POST" class="auth-form">
+
+        <!-- ИМЯ -->
+        <div class="input-group">
+            <label>{{ _("Имя") }}</label>
+            <input
+                name="name"
+                type="text"
+                placeholder="{{ _('Ваше имя') }}"
+                required
+            />
+        </div>
+
+        <!-- EMAIL -->
+        <div class="input-group">
+            <label>{{ _("Email") }}</label>
+            <input
+                name="email"
+                type="email"
+                placeholder="{{ _('Введите email') }}"
+                required
+            />
+        </div>
+
+        <!-- ПАРОЛЬ -->
+        <div class="input-group password-holder">
+            <label>{{ _("Пароль") }}</label>
+            <input
+                name="password"
+                id="reg_password"
+                type="password"
+                placeholder="{{ _('Введите пароль') }}"
+                required
+            />
+            <span
+                class="toggle-pass"
+                onclick="togglePassword('reg_password', this)"
+            >
+                {{ _("Показать") }}
+            </span>
+        </div>
+
+        <!-- РОЛЬ -->
+        <div class="input-group">
+            <label>{{ _("Тип аккаунта") }}</label>
+            <select name="role" required class="role-select">
+                <option value="tenant">{{ _("Я ищу жильё") }}</option>
+                <option value="landlord">{{ _("Я сдаю жильё") }}</option>
+            </select>
+        </div>
+
+        <!-- TERMS -->
+        <div class="input-group checkbox-group">
+            <label class="checkbox-label">
+                <input type="checkbox" name="terms" required>
+                <span>
+                    {{ _("Я принимаю") }}
+                    <a href="/terms" target="_blank">
+                        {{ _("Пользовательское соглашение") }}
+                    </a>
+                </span>
+            </label>
+        </div>
+
+        <button type="submit" class="primary-btn full-btn">
+            {{ _("Зарегистрироваться") }}
+        </button>
+    </form>
+
+    <p class="auth-switch">
+        {{ _("Уже есть аккаунт?") }}
+        <a href="/login">{{ _("Войти") }}</a>
+    </p>
+
+</div>
+
+<script>
+function togglePassword(id, el) {
+    const field = document.getElementById(id);
+
+    if (field.type === "password") {
+        field.type = "text";
+        el.innerText = "{{ _('Скрыть') }}";
+    } else {
+        field.type = "password";
+        el.innerText = "{{ _('Показать') }}";
+    }
+}
+</script>
+
+</body>
+</html>

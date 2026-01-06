@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-section">
+    <div class="page-card page-card-narrow">
+
+        <h2>{{ _("Настройки профиля") }}</h2>
+        <p>{{ _("Обновите информацию профиля и параметры аккаунта.") }}</p>
+
+        <form action="/profile/settings" method="POST" class="settings-form">
+
+            <label>{{ _("Имя") }}</label>
+            <input type="text" name="name" value="{{ user.name or '' }}">
+
+            <label>{{ _("Email") }}</label>
+            <input type="email" name="email" value="{{ user.email }}">
+
+            <label>{{ _("Новый пароль") }}</label>
+            <input type="password" name="password" placeholder="{{ _('Оставьте пустым, если не изменяете') }}">
+
+            <label>{{ _("Тема сайта") }}</label>
+            <select name="theme">
+                <option value="light" {% if user.theme=='light' %}selected{% endif %}>
+                    {{ _("Светлая") }}
+                </option>
+                <option value="dark" {% if user.theme=='dark' %}selected{% endif %}>
+                    {{ _("Тёмная") }}
+                </option>
+            </select>
+
+            <button class="primary-btn">{{ _("Сохранить изменения") }}</button>
+
+        </form>
+
+    </div>
+</section>
+
+
+<style>
+.settings-form input,
+.settings-form select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+}
+
+.settings-form label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+}
+</style>
+
+{% endblock %}

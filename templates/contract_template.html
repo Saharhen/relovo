@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ _("Договор аренды (Mietvertrag) — Deal #%(deal_id)s", deal_id=deal.id) }}</title>
+  <style>
+    @page { size: A4; margin: 16mm 14mm; }
+    body { font-family: DejaVu Sans, Arial, sans-serif; font-size: 11pt; color: #111; }
+    h1 { font-size: 16pt; margin: 0 0 8mm 0; }
+    h2 { font-size: 12pt; margin: 7mm 0 2mm 0; }
+    p { margin: 0 0 3mm 0; line-height: 1.35; }
+    .muted { color: #444; font-size: 10pt; }
+    .box { border: 1px solid #ddd; padding: 6mm; border-radius: 8px; margin: 0 0 6mm 0; }
+    .row { display: flex; gap: 10mm; }
+    .col { flex: 1; }
+    .label { font-weight: 700; }
+    .table { width: 100%; border-collapse: collapse; }
+    .table td { border: 1px solid #ddd; padding: 3mm 4mm; vertical-align: top; }
+    .sig { margin-top: 10mm; }
+    .sigline { margin-top: 12mm; border-top: 1px solid #111; padding-top: 2mm; }
+    .small { font-size: 10pt; }
+  </style>
+</head>
+<body>
+
+  <h1>{{ _("Договор аренды жилого помещения (Mietvertrag für Wohnraum)") }}</h1>
+  <p class="muted">
+    {{ _("Это шаблон для MVP Relovo: текст на русском с немецкими терминами в скобках.") }}
+    {{ _("Не является юридической консультацией (keine Rechtsberatung).") }}
+  </p>
+
+  <div class="box">
+    <p><span class="label">{{ _("Сделка / Deal:") }}</span> {{ _("№ %(deal_id)s", deal_id=deal.id) }}</p>
+    <p><span class="label">{{ _("Объект / Objekt:") }}</span>
+      {{ deal.listing.title if deal.listing else ("Listing #" ~ deal.listing_id) }},
+      {{ deal.listing.city if deal.listing else "" }}
+    </p>
+    <p><span class="label">{{ _("Период аренды (Mietzeit):") }}</span>
+      {% if deal.start_date %}{{ deal.start_date.strftime("%d.%m.%Y") }}{% else %}—{% endif %}
+      —
+      {% if deal.end_date %}{{ deal.end_date.strftime("%d.%m.%Y") }}{% else %}—{% endif %}
+    </p>
+    <p><span class="label">{{ _("Арендная плата (Miete):") }}</span>
+      {% if deal.listing %}{{ deal.listing.price }} {{ _("EUR / месяц (pro Monat)") }}{% else %}—{% endif %}
+    </p>
+  </div>
+
+  <h2>{{ _("1. Стороны договора (Vertragsparteien)") }}</h2>
+  <div class="row">
+    <div class="col box">
+      <p class="label">{{ _("Арендатор (Mieter):") }}</p>
+      <p>{{ deal.tenant.name or "—" }}</p>
+      <p class="small">{{ _("E-mail:") }} {{ deal.tenant.email }}</p>
+    </div>
+    <div class="col box">
+      <p class="label">{{ _("Владелец (Vermieter):") }}</p>
+      <p>{{ deal.landlord.name or "—" }}</p>
+      <p class="small">{{ _("E-mail:") }} {{ deal.landlord.email }}</p>
+    </div>
+  </div>
+
+  <h2>{{ _("2. Предмет договора (Mietgegenstand)") }}</h2>
+  <p>{{ _("2.1. Владелец (Vermieter) предоставляет, а Арендатор (Mieter) принимает в аренду жилое помещение (Wohnraum) по объявлению, указанному выше (Objekt).") }}</p>
+  <p>{{ _("2.2. Состояние и комплектность передаются по акту приёма‑передачи (Übergabeprotokoll), который стороны могут подписать отдельно и загрузить в Relok.") }}</p>
+
+  <h2>{{ _("3. Срок аренды (Mietdauer)") }}</h2>
+  <p>{{ _("3.1. Аренда является срочной (befristet) и действует в период, указанный в разделе «Сделка / Deal».") }}</p>
+  <p>{{ _("3.2. Продление возможно по соглашению сторон (nach Vereinbarung).") }}</p>
+
+  <h2>{{ _("4. Арендная плата и платежи (Miete und Zahlungen)") }}</h2>
+  <p>{{ _("4.1. Арендная плата (Kaltmiete / Miete) составляет сумму, указанную в разделе «Арендная плата (Miete)».") }}</p>
+  <p>{{ _("4.2. Дополнительные расходы (Nebenkosten), коммунальные платежи (Betriebskosten), интернет (Internet) и прочие услуги согласуются сторонами отдельно и фиксируются в переписке/документах сделки.") }}</p>
+  <p>{{ _("4.3. Способ и сроки оплаты (Zahlungsweise / Fälligkeit) — по отдельной договорённости.") }}</p>
+
+  <h2>{{ _("5. Обеспечительный платёж (Kaution)") }}</h2>
+  <p>{{ _("5.1. Если стороны согласовали залог (Kaution), его размер и условия возврата фиксируются отдельным документом/пунктом.") }}</p>
+
+  <h2>{{ _("6. Права и обязанности сторон (Rechte und Pflichten)") }}</h2>
+  <p>{{ _("6.1. Арендатор (Mieter) обязуется бережно пользоваться жильём, соблюдать правила дома (Hausordnung), не нарушать права соседей (Nachbarn) и правила тишины (Ruhezeiten).") }}</p>
+  <p>{{ _("6.2. Владелец (Vermieter) обязуется обеспечить возможность пользования жильём в согласованный срок и предоставить ключи (Schlüssel).") }}</p>
+  <p>{{ _("6.3. Мелкий текущий ремонт (Kleinreparaturen) и ответственность за повреждения (Schäden) — по отдельной договорённости и общим принципам разумности.") }}</p>
+
+  <h2>{{ _("7. Расторжение (Kündigung) и отмена") }}</h2>
+  <p>{{ _("7.1. Досрочное расторжение (Kündigung) возможно по взаимному согласию (einvernehmlich) либо в случаях, предусмотренных законом (gesetzlich).") }}</p>
+  <p>{{ _("7.2. Правила отмены и возвратов (Stornierung / Rückerstattung) фиксируются в условиях сделки Relok и/или отдельном соглашении сторон.") }}</p>
+
+  <h2>{{ _("8. Персональные данные (Datenschutz)") }}</h2>
+  <p>{{ _("8.1. Стороны соглашаются, что обмен документами через Relok осуществляется для исполнения сделки (Vertragserfüllung). Relok хранит файлы и контрольные суммы (Hash / SHA‑256) для подтверждения подлинности документов.") }}</p>
+
+  <h2>{{ _("9. Прочие условия (Sonstiges)") }}</h2>
+  <p>{{ _("9.1. Этот договор оформляется в электронном виде (elektronisch) для скачивания и ручной подписи (handschriftliche Unterschrift).") }}</p>
+  <p>{{ _("9.2. Любые приложения, переписка и дополнительные документы, загруженные в сделку Relok, могут являться частью договорённостей сторон.") }}</p>
+
+  <h2>{{ _("10. Подписи (Unterschriften)") }}</h2>
+  <p class="muted">{{ _("Подписанные версии договора стороны загружают обратно в сделку. Relok показывает контрольную сумму (SHA‑256), чтобы обе стороны могли убедиться, что видят один и тот же файл.") }}</p>
+
+  <div class="sig row">
+    <div class="col">
+      <div class="sigline">
+        {{ _("Арендатор (Mieter): %(name)s", name=(deal.tenant.name or "")) }}<br/>
+        {{ _("Дата (Datum): ____ / ____ / ______") }}
+      </div>
+    </div>
+    <div class="col">
+      <div class="sigline">
+        {{ _("Владелец (Vermieter): %(name)s", name=(deal.landlord.name or "")) }}<br/>
+        {{ _("Дата (Datum): ____ / ____ / ______") }}
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="chat-container">
+    <div class="chat-header">
+        {{ _("Чат по объявлению") }}: {{ thread.listing.title }}
+    </div>
+
+    <div class="chat-messages" id="chat-messages">
+        {% for m in messages %}
+        <div class="chat-msg {% if m.sender_id == session.user_id %}me{% else %}them{% endif %}">
+            <div class="msg-body">{{ m.body }}</div>
+            <div class="msg-time">{{ m.created_at.strftime("%H:%M") }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <form id="chat-form" class="chat-input">
+        <textarea
+            id="chat-text"
+            placeholder="{{ _('Введите сообщение...') }}"
+            rows="2"
+            required></textarea>
+
+        <button type="submit">
+            {{ _("Отправить") }}
+        </button>
+    </form>
+</div>
+
+<script>
+async function sendMsg(e) {
+    if (e) e.preventDefault();
+
+    const input = document.getElementById("chat-text");
+    const text = input.value.trim();
+    if (!text) return;
+
+    const res = await fetch("/chat/{{ thread.id }}/send", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ text })
+    });
+
+    const data = await res.json();
+
+    if (!data.error) {
+        const box = document.getElementById("chat-messages");
+        box.innerHTML += `
+            <div class="chat-msg me">
+                <div class="msg-body">${data.text}</div>
+                <div class="msg-time">${data.time}</div>
+            </div>`;
+        input.value = "";
+        box.scrollTop = box.scrollHeight;
+    }
+}
+
+document.getElementById("chat-form")
+    .addEventListener("submit", sendMsg);
+</script>
+
+
+{% endblock %}

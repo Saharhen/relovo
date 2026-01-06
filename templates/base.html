@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relovo</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="/static/favicon.png" sizes="512x512">
+</head>
+<body class="{{ user.theme }}">
+
+<header class="navbar">
+    <a href="/"
+       class="logo-link"
+       style="font-size:22px; color:#6A39FF; font-weight:700; text-decoration:none;">
+        Relovo
+    </a>
+
+    <nav class="nav-links">
+        <a href="/listings">{{ _("Объявления") }}</a>
+
+        {% if session.get("user_id") %}
+
+            {# ---------------- ADMIN ---------------- #}
+            {% if user and user.role == "admin" %}
+                <a href="/admin/listings">{{ _("Объявления (админ)") }}</a>
+                <a href="/admin/deals">{{ _("Сделки") }}</a>
+
+            {# ---------------- LANDLORD ---------------- #}
+            {% elif user and user.role == "landlord" %}
+                <a href="/create-listing">{{ _("Добавить объявление") }}</a>
+                <a href="/my-listings">{{ _("Мои объявления") }}</a>
+
+            {# ---------------- TENANT ---------------- #}
+            {% else %}
+                <a href="/deals">{{ _("Мои сделки") }}</a>
+            {% endif %}
+
+            <a href="/dashboard">{{ _("Личный кабинет") }}</a>
+            <a href="/logout" class="nav-login-btn">{{ _("Выйти") }}</a>
+
+        {% else %}
+            <a href="/login" class="nav-login-btn">{{ _("Войти") }}</a>
+        {% endif %}
+
+        <!-- LANGUAGE SWITCH -->
+        <div class="lang-switch">
+            <a href="/set-lang/de"
+               class="{% if get_locale() == 'de' %}active-lang{% endif %}">
+                DE
+            </a>
+            <span class="lang-separator">|</span>
+            <a href="/set-lang/en"
+               class="{% if get_locale() == 'en' %}active-lang{% endif %}">
+                EN
+            </a>
+        </div>
+    </nav>
+</header>
+
+
+<main class="main-container">
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© 2025 Relovo</span>
+
+    <div class="footer-links">
+      <a href="/about">{{ _("О нас") }}</a>
+      <a href="/impressum">Impressum</a>
+      <a href="/privacy">{{ _("Политика конфиденциальности") }}</a>
+      <a href="/terms">{{ _("Пользовательское соглашение") }}</a>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>

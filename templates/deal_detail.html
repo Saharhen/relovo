@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ _("Сделка") }} #{{ deal.id }} — Relovo</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/png" href="/static/favicon.png" sizes="512x512">
+</head>
+
+<body>
+<header class="navbar">
+    <a href="/"
+       class="logo-link"
+       style="font-size:22px; color:#6A39FF; font-weight:700; text-decoration:none;">
+        Relovo
+    </a>
+    <nav>
+        <a href="/deals">{{ _("Сделки") }}</a>
+        <a href="/dashboard">{{ _("Личный кабинет") }}</a>
+        <a href="/logout" class="nav-login-btn">{{ _("Выйти") }}</a>
+    </nav>
+</header>
+
+<div class="container deal-page">
+
+    <h1>{{ _("Сделка") }} #{{ deal.id }}</h1>
+
+    <!-- PARTICIPANTS -->
+    <section class="card">
+        <h3>{{ _("Участники") }}</h3>
+
+        <p><strong>{{ _("Арендатор") }}:</strong>
+            {{ deal.tenant.name or _("Арендатор") }}
+        </p>
+
+        <p><strong>{{ _("Владелец") }}:</strong>
+            {% if role == "admin" %}
+                {{ deal.landlord.email }}
+            {% else %}
+                {{ deal.landlord.name or _("Владелец") }}
+            {% endif %}
+        </p>
+    </section>
+
+    <!-- STATUS -->
+    <section class="card">
+        <h3>{{ _("Статус сделки") }}</h3>
+        <span class="status-badge status-{{ deal.status }}">
+            <span class="status-text">{{ _(deal.status) }}</span>
+        </span>
+    </section>
+
+    <!-- RENTAL DATES -->
+    <div class="info-block">
+        <h3>{{ _("Период аренды") }}</h3>
+
+        {% if deal.start_date and deal.end_date %}
+            <p>
+                {{ deal.start_date.strftime("%d.%m.%Y") }}
+                →
+                {{ deal.end_date.strftime("%d.%m.%Y") }}
+            </p>
+
+            {% if deal.dates_confirmed %}
+                <div class="dates-approved-box">
+                    <span class="dates-approved-icon">✓</span>
+                    <span class="dates-approved-text">
+                        {{ _("Даты аренды подтверждены") }}
+                    </span>
+                </div>
+            {% else %}
+                <span class="badge pending">
+                    {{ _("Ожидает подтверждения администратором") }}
+                </span>
+            {% endif %}
+        {% endif %}
+
+        {% if role == "tenant" and not deal.dates_confirmed %}
+        <form method="POST"
+              action="/deal/{{ deal.id }}/dates"
+              class="date-form">
+
+            <label>{{ _("Дата заезда") }}</label>
+            <input type="date"
+                   name="start_date"
+                   required
+                   value="{{ deal.start_date or '' }}">
+
+            <label>{{ _("Дата выезда") }}</label>
+            <input type="date"
+                   name="end_date"
+                   required
+                   value="{{ deal.end_date or '' }}">
+
+            <button class="primary-btn">
+                {{ _("Сохранить даты") }}
+            </button>
+        </form>
+        {% endif %}
+    </div>
+
+    <!-- CONTRACT (Admin uploads unsigned PDF; parties upload signed PDFs) -->
+    <section class="card">
+        <h3>{{ _("Договор") }}</h3>
+
+        {% if contract %}
+            <p>
+                📄 <strong>{{ _("Договор (PDF, без подписи)") }}</strong>
+                — <a href="/static/{{ contract.unsigned_filename }}" target="_blank">{{ _("Открыть") }}</a>
+            </p>
+
+            {# SHA лучше показывать только админу (обычным юзерам это не нужно) #}
+            {% if contract.unsigned_sha256 and role == "admin" %}
+            <p class="small-muted">
+                {{ _("Отпечаток SHA-256") }}:
+                <code>{{ contract.unsigned_sha256 }}</code>
+            </p>
+            {% endif %}
+
+            {% if role == "admin" %}
+            <hr>
+            <form method="POST"
+                  action="/deal/{{ deal.id }}/contract/upload_unsigned"
+                  enctype="multipart/form-data"
+                  class="upload-form">
+
+                <label>{{ _("Заменить договор (PDF, без подписи)") }}</label>
+                <input type="file" name="file" accept="application/pdf" required>
+
+                <button class="primary-btn">
+                    {{ _("Загрузить") }}
+                </button>
+
+                <p class="small-muted">
+                    {{ _("После замены договора подписи сторон нужно загрузить заново (если ты так настроил в бэкенде).") }}
+                </p>
+            </form>
+            {% endif %}
+
+            <hr>
+
+            <h4>{{ _("Подписанные версии") }}</h4>
+
+            {# --------- FIX: signed_contracts может быть dict ИЛИ list --------- #}
+            {% set tenant_signed = None %}
+            {% set landlord_signed = None %}
+
+            {% if signed_contracts is mapping %}
+                {% set tenant_signed = signed_contracts.get("tenant") %}
+                {% set landlord_signed = signed_contracts.get("landlord") %}
+            {% else %}
+                {% for s in signed_contracts %}
+                    {% if s.party == "tenant" %}{% set tenant_signed = s %}{% endif %}
+                    {% if s.party == "landlord" %}{% set landlord_signed = s %}{% endif %}
+                {% endfor %}
+            {% endif %}
+            {# --------------------------------------------------------------- #}
+
+            <ul class="doc-list">
+                <li class="doc-item">
+                    <div class="doc-left">
+                        ✍️ <strong>{{ _("Арендатор") }}</strong>
+                        {% if tenant_signed %}
+                            <span class="badge approved">{{ _("Загружено") }}</span>
+                            {% if tenant_signed.sha256 and role == "admin" %}
+                            <div class="small-muted">
+                                SHA-256: <code>{{ tenant_signed.sha256 }}</code>
+                            </div>
+                            {% endif %}
+                        {% else %}
+                            <span class="badge pending">{{ _("Ещё не загружено") }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="doc-right">
+                        {% if tenant_signed %}
+                            <a href="/static/{{ tenant_signed.filename }}" target="_blank">{{ _("Открыть") }}</a>
+                        {% endif %}
+                    </div>
+                </li>
+
+                <li class="doc-item">
+                    <div class="doc-left">
+                        ✍️ <strong>{{ _("Владелец") }}</strong>
+                        {% if landlord_signed %}
+                            <span class="badge approved">{{ _("Загружено") }}</span>
+                            {% if landlord_signed.sha256 and role == "admin" %}
+                            <div class="small-muted">
+                                SHA-256: <code>{{ landlord_signed.sha256 }}</code>
+                            </div>
+                            {% endif %}
+                        {% else %}
+                            <span class="badge pending">{{ _("Ещё не загружено") }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="doc-right">
+                        {% if landlord_signed %}
+                            <a href="/static/{{ landlord_signed.filename }}" target="_blank">{{ _("Открыть") }}</a>
+                        {% endif %}
+                    </div>
+                </li>
+            </ul>
+
+            {% if role in ["tenant", "landlord"] %}
+            <hr>
+            <form method="POST"
+                  action="/deal/{{ deal.id }}/contract/upload"
+                  enctype="multipart/form-data"
+                  class="upload-form">
+
+                <label>{{ _("Загрузить подписанный договор (PDF)") }}</label>
+                <input type="file" name="file" accept="application/pdf" required>
+
+                <button class="primary-btn">
+                    {{ _("Загрузить") }}
+                </button>
+
+                <p class="small-muted">
+                    {{ _("Загружай PDF с подписью. Файл будет сохранён и доступен администратору.") }}
+                </p>
+            </form>
+            {% endif %}
+
+        {% else %}
+            <p>{{ _("Договор ещё не загружен администратором") }}</p>
+
+            {% if role == "admin" %}
+            <form method="POST"
+                  action="/deal/{{ deal.id }}/contract/upload_unsigned"
+                  enctype="multipart/form-data"
+                  class="upload-form">
+
+                <label>{{ _("Загрузить договор (PDF, без подписи)") }}</label>
+                <input type="file" name="file" accept="application/pdf" required>
+
+                <button class="primary-btn">
+                    {{ _("Загрузить") }}
+                </button>
+
+                <p class="small-muted">
+                    {{ _("Это будет базовый договор, который стороны подпишут и загрузят подписанные версии.") }}
+                </p>
+            </form>
+            {% else %}
+                <span class="badge pending">
+                    {{ _("Ожидайте: администратор загрузит договор") }}
+                </span>
+            {% endif %}
+        {% endif %}
+    </section>
+
+    <!-- DOCUMENTS -->
+    <section class="card">
+        <h3>{{ _("Документы") }}</h3>
+
+        {% if docs %}
+        <ul class="doc-list">
+            {% for d in docs %}
+            <li class="doc-item">
+                <div class="doc-left">
+                    📄 <strong>{{ _(d.doc_type) }}</strong>
+
+                    {% if d.status == "pending" %}
+                        <span class="badge pending">{{ _("Ожидает проверки") }}</span>
+                    {% elif d.status == "approved" %}
+                        <span class="badge approved">{{ _("Подтверждён") }}</span>
+                    {% elif d.status == "rejected" %}
+                        <span class="badge rejected">{{ _("Отклонён") }}</span>
+                    {% endif %}
+
+                    {% if d.status == "rejected" and d.note %}
+                        <div class="doc-reject-note">
+                            {{ _("Причина отклонения") }}:
+                            <em>{{ d.note }}</em>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="doc-right">
+                    <a href="/static/{{ d.filename }}" target="_blank">
+                        {{ _("Открыть") }}
+                    </a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>{{ _("Документы ещё не загружены") }}</p>
+        {% endif %}
+
+        {% if role in ["tenant", "landlord"] %}
+        <hr>
+
+        <form method="POST"
+              action="/deal/{{ deal.id }}/upload"
+              enctype="multipart/form-data"
+              class="upload-form">
+
+            <label>{{ _("Тип документа") }}</label>
+            <select name="doc_type" required>
+                {% for key, label in doc_types %}
+                    <option value="{{ key }}">{{ _(label) }}</option>
+                {% endfor %}
+            </select>
+
+            <input type="file" name="file" required>
+
+            <button class="primary-btn">
+                {{ _("Загрузить документ") }}
+            </button>
+        </form>
+        {% endif %}
+    </section>
+
+    <!-- HISTORY -->
+    <section class="card">
+        <h3>{{ _("История") }}</h3>
+
+        {% if audit_log %}
+        <ul class="audit-list">
+            {% for a in audit_log %}
+            <li class="audit-item">
+                {% if a.action == "deal_created" %}
+                    🟢 {{ _("Сделка создана") }}
+                {% elif a.action == "doc_upload" %}
+                    📄 {{ _("Загружен документ") }}
+                {% elif a.action == "doc_review" %}
+                    🧐 {{ _("Документ проверен") }}
+                {% elif a.action == "status_change" %}
+                    🔄 {{ _("Статус сделки изменён") }}
+                {% elif a.action == "deal_canceled" %}
+                    ❌ {{ _("Сделка отменена") }}
+                {% else %}
+                    ℹ {{ _("Обновление сделки") }}
+                {% endif %}
+
+                <div class="audit-time">
+                    {{ a.created_at.strftime("%d.%m.%Y %H:%M") }}
+                </div>
+
+                {% if role == "admin" and a.meta %}
+                <div class="audit-meta">
+                    <small>{{ a.meta }}</small>
+                </div>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>{{ _("История пока пуста") }}</p>
+        {% endif %}
+    </section>
+
+</div>
+
+</body>
+</html>

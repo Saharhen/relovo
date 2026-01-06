@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero-photo">
+    <div class="hero-inner">
+        <h1>{{ _("Найди жильё легко") }}</h1>
+        <p>{{ _("Relovo помогает найти идеальное жильё под ваш стиль жизни") }}</p>
+
+        <div class="hero-search">
+            <input id="ai-search-input" type="text" placeholder="{{ _('Zum Beispiel ein ruhiges Ort in Berlin') }}">
+            <button onclick="aiSearch()">{{ _("Найти") }}</button>
+        </div>
+
+        <div id="ai-results" class="listing-grid"></div>
+    </div>
+</div>
+
+<div class="container">
+<!--
+<section class="how-works">
+    <h2 class="how-title">{{ _("Как работает Relovo") }}</h2>
+
+    <div class="how-grid">
+
+        <div class="how-card">
+            <div class="how-icon">🌐</div>
+            <h3>{{ _("1. Опиши, как ты живёшь") }}</h3>
+            <p>{{ _("Введи свои предпочтения: работа, семья, питомцы — AI сам подберёт варианты.") }}</p>
+        </div>
+
+        <div class="how-card">
+            <div class="how-icon">📍</div>
+            <h3>{{ _("2. Получи персональные рекомендации") }}</h3>
+            <p>{{ _("Наш AI анализирует тысячи объявлений и выдаёт жильё, подходящее под твой стиль жизни.") }}</p>
+        </div>
+
+        <div class="how-card">
+            <div class="how-icon">🛡️</div>
+            <h3>{{ _("3. Оформи аренду онлайн") }}</h3>
+            <p>{{ _("Подпиши цифровой договор, пройди верификацию и оплати через защищённый escrow.") }}</p>
+        </div>
+
+    </div>
+</section>
+-->
+<section class="how-works">
+  <h2 class="how-title">{{ _("Почему Relovo") }}</h2>
+
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-icon">🧠</div>
+      <h3>{{ _("Подбор под стиль жизни") }}</h3>
+      <p>{{ _("Мы учитываем не только город и цену, но и то, как вы живёте: работа, семья, питомцы.") }}</p>
+    </div>
+
+        <div class="how-card">
+            <div class="how-icon">🛡️</div>
+            <h3>{{ _("Оформи аренду онлайн") }}</h3>
+            <p>{{ _("Подпиши цифровой договор, пройди верификацию и оплати через защищённый escrow.") }}</p>
+        </div>
+
+    <div class="how-card">
+      <div class="how-icon">🌍</div>
+      <h3>{{ _("Для переезда, а не отпуска") }}</h3>
+      <p>{{ _("Relovo создан для релокации, а не краткосрочного туризма.") }}</p>
+    </div>
+  </div>
+</section>
+
+<h2 class="section-title">🔥{{ _("Популярные варианты") }}</h2>
+
+<div class="listing-grid">
+    {% for item in listings %}
+    <a href="/listing/{{ item.id }}" class="listing-card">
+        <img src="/static/uploads/{{ item.image_filenames[0] if item.image_filenames else 'no_image.png' }}">
+        <h3>{{ item.title }}</h3>
+        <p class="city">{{ item.city }}</p>
+        <p class="price">€{{ item.price }}/{{ _("мес") }}</p>
+    </a>
+    {% endfor %}
+</div>
+
+<div style="text-align:center; margin-top:30px;">
+    <a href="/listings" class="primary-btn">{{ _("Посмотреть все объявления") }}</a>
+</div>
+
+</div>
+{% endblock %}
+
+
+<script>
+async function aiSearch() {
+    const query = document.getElementById("ai-search-input").value;
+
+    const res = await fetch("/ai-search", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query })
+    });
+
+    const data = await res.json();
+
+    let html = "";
+    data.forEach(item => {
+        html += `
+            <a href="/listing/${item.id}" class="listing-card">
+                <img src="/static/uploads/${item.image}" />
+                <h3>${item.title}</h3>
+                <p>${item.city}</p>
+                <p>€${item.price}/мес</p>
+            </a>
+        `;
+    });
+
+    document.getElementById("ai-results").innerHTML = html;
+}
+</script>

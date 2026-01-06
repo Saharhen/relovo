@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Личный кабинет — RelokAI</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header class="navbar">
+    <a href="/" class="logo-link"><img src="/static/relok_logo.png" class="logo-img-small" /></a>
+    <nav>
+        <a href="/listings">Объявления</a>
+        <a href="/logout">Выйти</a>
+    </nav>
+</header>
+
+<section class="dashboard">
+    <h2>Добро пожаловать, {{ user.email }}</h2>
+    <p>Ваши персональные рекомендации появятся здесь.</p>
+</section>
+<script>
+function togglePassword(){
+  const field=document.getElementById('password');
+  field.type = field.type === 'password' ? 'text' : 'password';
+}
+</script>
+</body>
+</html>

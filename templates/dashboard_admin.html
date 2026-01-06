@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-section">
+  <div class="page-card">
+    <div class="welcome-block">
+      <img src="/static/relok_logo.png" class="welcome-logo">
+      <h1>Admin 👋</h1>
+      <p class="welcome-sub">Управление сделками, документами и аудитом</p>
+    </div>
+
+    <div class="quick-actions">
+      <a href="/admin/deals" class="action-card">
+        <div class="action-icon">🧾</div>
+        <h3>Все сделки</h3>
+        <p>Фильтр по статусам, управление процессом</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
