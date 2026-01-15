@@ -1422,6 +1422,8 @@ msgstr "Anmelden, um zu reservieren"
 msgid "Текущие фото (перетащи, чтобы поменять порядок)"
 msgstr "Aktuelle Fotos (per Drag & Drop neu anordnen)"
 
+msgid "Договор"
+msgstr "Vertrag"
 
 
 

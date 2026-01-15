@@ -105,23 +105,40 @@ body {
     margin-bottom: 20px;
 }
 
-/* AUTH PAGES — новый красивый стиль */
 .auth-bg {
     background: linear-gradient(135deg, #6c4bff, #4b2dff);
-    height: 100vh;
+
+    min-height: 100vh;   /* ✔ вместо height */
+    padding: 40px 16px;  /* ✔ чтобы не прижималось */
+
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+
 .auth-card {
     width: 420px;
+    max-width: 100%;          /* важно для ноутов/узких окон */
+    box-sizing: border-box;   /* чтобы padding не расширял карточку */
     background: #ffffff;
     padding: 40px;
     border-radius: 18px;
     box-shadow: 0 12px 35px rgba(0,0,0,0.15);
     animation: fadeIn 0.4s ease;
 }
+
+@media (max-height: 800px) {
+    .auth-card {
+        padding: 28px;
+    }
+
+    .auth-title {
+        font-size: 22px;
+    }
+}
+
+
 
 .auth-title {
     text-align: center;
@@ -793,7 +810,13 @@ body {
 .relok-title {
     font-size: 18px;
     font-weight: 700;
+
+    /* КЛЮЧЕВОЕ */
+    white-space: nowrap;        /* в одну строку */
+    overflow: hidden;           /* скрыть лишнее */
+    text-overflow: ellipsis;    /* ... */
 }
+
 
 .relok-sub {
     font-size: 14px;

@@ -1181,6 +1181,23 @@ msgstr "Sign in to reserve"
 msgid "Текущие фото (перетащи, чтобы поменять порядок)"
 msgstr "Current photos (drag to change order)"
 
+msgid "Введите email"
+msgstr "Enter email"
+
+msgid "Введите пароль"
+msgstr "Enter password"
+
+msgid "Войти в аккаунт"
+msgstr "Log in"
+
+msgid "Уже есть аккаунт?"
+msgstr "Already have an account?"
+
+msgid "Договор"
+msgstr "Contract"
+
+msgid "Создать"
+msgstr "Create"
 
 
 
