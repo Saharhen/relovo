@@ -26,7 +26,7 @@ from models import (
     Deal, DealDocument, DealAudit,
     DealContract, DealContractSigned
 )
-from ai_utils import get_embedding, cosine_sim
+#from ai_utils import get_embedding, cosine_sim
 
 app = Flask(__name__)
 
@@ -326,50 +326,50 @@ def reorder_listing_images(listing_id):
 # AI SEARCH
 # ----------------------------
 
-@app.route("/ai-search", methods=["POST"])
-def ai_search():
-    data = request.get_json(silent=True) or {}
-    query_text = (data.get("query") or "").strip()
-
-    if not query_text:
-        return jsonify([])
-
-    query_emb = get_embedding(query_text)
-
-    listings_ = Listing.query.filter(Listing.embedding.isnot(None)).all()
-    if not listings_:
-        return jsonify([])
-
-    scored = []
-    for item in listings_:
-        if not item.embedding:
-            continue
-        sim = cosine_sim(query_emb, item.embedding)
-        scored.append((sim, item))
-
-    if not scored:
-        return jsonify([])
-
-    scored.sort(key=lambda x: x[0], reverse=True)
-    top_items = [item for sim, item in scored[:10]]
-
-    results = []
-    for item in top_items:
-        image = (
-            ListingImage.query
-            .filter_by(listing_id=item.id)
-            .order_by(ListingImage.sort_order.asc(), ListingImage.id.asc())
-            .first()
-        )
-        results.append({
-            "id": item.id,
-            "title": item.title,
-            "city": item.city,
-            "price": item.price,
-            "image": image.filename if image else None
-        })
-
-    return jsonify(results)
+#@app.route("/ai-search", methods=["POST"])
+#def ai_search():
+#    data = request.get_json(silent=True) or {}
+#    query_text = (data.get("query") or "").strip()
+#
+#    if not query_text:
+#        return jsonify([])
+#
+#    query_emb = get_embedding(query_text)
+#
+#    listings_ = Listing.query.filter(Listing.embedding.isnot(None)).all()
+#    if not listings_:
+#        return jsonify([])
+#
+#    scored = []
+#    for item in listings_:
+#        if not item.embedding:
+#            continue
+#        sim = cosine_sim(query_emb, item.embedding)
+#        scored.append((sim, item))
+#
+#    if not scored:
+#        return jsonify([])
+#
+#    scored.sort(key=lambda x: x[0], reverse=True)
+#    top_items = [item for sim, item in scored[:10]]
+#
+#    results = []
+#    for item in top_items:
+#        image = (
+#            ListingImage.query
+#            .filter_by(listing_id=item.id)
+#            .order_by(ListingImage.sort_order.asc(), ListingImage.id.asc())
+#            .first()
+#        )
+#        results.append({
+#            "id": item.id,
+#            "title": item.title,
+#            "city": item.city,
+#            "price": item.price,
+#            "image": image.filename if image else None
+#        })
+#
+#    return jsonify(results)
 
 
 # ----------------------------

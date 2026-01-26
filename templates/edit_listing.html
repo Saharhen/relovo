@@ -65,15 +65,25 @@
 
         <div class="preview-grid" id="existing-grid">
           {% for img in listing.images %}
-          <div class="preview-item existing" data-img-id="{{ img.id }}" style="cursor: grab;">
+          <div class="preview-item existing {% if loop.first %}main-photo{% endif %}"
+              data-img-id="{{ img.id }}"
+              style="cursor: grab;">
+
+            {% if loop.first %}
+              <div class="main-photo-star" title="{{ _('Главное фото') }}">★</div>
+            {% endif %}
+
             <img src="/static/uploads/{{ img.filename }}" alt="">
-            <button type="button" class="delete-img-btn"
+
+            <button type="button"
+                    class="delete-img-btn"
                     onclick="location.href='/delete-image/{{ img.id }}'">
               {{ _('Удалить') }}
             </button>
           </div>
           {% endfor %}
         </div>
+
 
       </div>
       {% endif %}
@@ -89,8 +99,33 @@
 <script>
   const grid = document.getElementById("existing-grid");
   if (grid) {
-    new Sortable(grid, { animation: 150 });
+    new Sortable(grid, {
+      animation: 150,
+      onEnd: updateMainPhotoStar
+    });
   }
+
+  function updateMainPhotoStar() {
+    const items = document.querySelectorAll("#existing-grid .preview-item");
+
+    items.forEach((item, index) => {
+      item.classList.remove("main-photo");
+      const star = item.querySelector(".main-photo-star");
+      if (star) star.remove();
+
+      if (index === 0) {
+        item.classList.add("main-photo");
+
+        const starDiv = document.createElement("div");
+        starDiv.className = "main-photo-star";
+        starDiv.innerText = "★";
+        starDiv.title = "Главное фото";
+
+        item.appendChild(starDiv);
+      }
+    });
+  }
+
 
   const form = document.getElementById("edit-listing-form");
 

@@ -2273,3 +2273,101 @@ body.dark .status-step{
 .footer-links a:hover {
   text-decoration: underline;
 }
+
+.hero-hints {
+  margin-top: 16px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.hero-hints span {
+  background: rgba(255,255,255,0.15);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+/* ===== HERO Quick Cities (chips) ===== */
+.quick-cities{
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.quick-cities a{
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.22);
+  transition: 0.2s;
+}
+
+.quick-cities a:hover{
+  background: rgba(255,255,255,0.28);
+  transform: translateY(-1px);
+}
+
+/* ===== HERO Hints ===== */
+.hero-hints{
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.hero-hints span{
+  color: #fff;
+  background: rgba(0,0,0,0.22);
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+.hero-inner h1{
+  text-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.hero-inner p{
+  text-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.hero-search input{
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+}
+
+/* ===== MAIN PHOTO STAR ===== */
+.preview-item {
+  position: relative;
+}
+
+.main-photo-star {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #FFD700;
+  color: #000;
+  font-size: 14px;
+  font-weight: 900;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  z-index: 5;
+}
+
+.main-photo img {
+  outline: 3px solid #FFD700;
+}

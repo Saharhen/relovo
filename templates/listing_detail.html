@@ -1,150 +1,174 @@
 <!DOCTYPE html>
 <html lang="{{ get_locale() }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ listing.title }} — Relovo</title>
-    <link rel="stylesheet" href="/static/style.css">
-    <!-- favicon -->
-    <link rel="icon" type="image/png" href="/static/favicon.png" sizes="512x512">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ listing.title }} — Relovo</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" type="image/png" href="/static/favicon.png" sizes="512x512">
 </head>
 
 <body>
 
 <header class="navbar">
-    <span style="font-size:22px; color:#6A39FF; font-weight:700;">Relovo</span>
-    <nav>
-        <a href="/listings">{{ _("Объявления") }}</a>
-        {% if session.get("user_id") %}
-            <a href="/dashboard">{{ _("Личный кабинет") }}</a>
-            <a href="/logout" class="nav-login-btn">{{ _("Выйти") }}</a>
-        {% else %}
-            <a href="/login" class="nav-login-btn">{{ _("Войти") }}</a>
-        {% endif %}
-    </nav>
+  <span style="font-size:22px; color:#6A39FF; font-weight:700;">Relovo</span>
+  <nav>
+    <a href="/listings">{{ _("Объявления") }}</a>
+    {% if session.get("user_id") %}
+      <a href="/dashboard">{{ _("Личный кабинет") }}</a>
+      <a href="/logout" class="nav-login-btn">{{ _("Выйти") }}</a>
+    {% else %}
+      <a href="/login" class="nav-login-btn">{{ _("Войти") }}</a>
+    {% endif %}
+  </nav>
 </header>
 
 <div class="container">
 
-    <!-- TITLE -->
-    <h1>{{ listing.title }}</h1>
+  <h1>{{ listing.title }}</h1>
 
-    <!-- META -->
-    <p class="city">
-        {{ listing.city }} • €{{ listing.price }}/{{ _("мес") }}
-    </p>
+  <p class="city">
+    {{ listing.city }} • €{{ listing.price }}/{{ _("мес") }}
+  </p>
 
-    <!-- RESERVE BLOCK -->
-    {% if session.get("user_id") and user.id != listing.user_id %}
-        <div class="reserve-box">
-            {% if existing_deal %}
-                <a href="/deal/{{ existing_deal.id }}" class="primary-btn">
-                    {{ _("Открыть сделку") }}
-                </a>
-                <p class="deal-status">
-                    {{ _("Статус") }}:
-                    <strong>{{ existing_deal.status }}</strong>
-                </p>
-            {% else %}
-                <form method="POST" action="/reserve/{{ listing.id }}">
-                    <button class="primary-btn">
-                        🛡 {{ _("Зарезервировать через Relovo") }}
-                    </button>
-                </form>
-                <p class="reserve-hint">
-                    {{ _("Резервирование создаёт сделку. Документы и оплата проходят через Relok.") }}
-                </p>
-            {% endif %}
-        </div>
-    {% elif not session.get("user_id") %}
-        <div class="reserve-box">
-            <a href="/login" class="primary-btn">
-                {{ _("Войти, чтобы зарезервировать") }}
-            </a>
-        </div>
-    {% endif %}
-
-    <!-- GALLERY -->
-    <div class="listing-gallery">
-        {% for img in listing.images[:5] %}
-            <img src="/static/uploads/{{ img.filename }}"
-                 class="gallery-img"onclick='openSlider({{ loop.index0 }})'>
-        {% endfor %}
+  <!-- RESERVE BLOCK (FIX: check if existing_deal is defined) -->
+  {% if session.get("user_id") and user and user.id != listing.user_id %}
+    <div class="reserve-box">
+      {% if existing_deal is defined and existing_deal %}
+        <a href="/deal/{{ existing_deal.id }}" class="primary-btn">
+          {{ _("Открыть сделку") }}
+        </a>
+        <p class="deal-status">
+          {{ _("Статус") }}: <strong>{{ existing_deal.status }}</strong>
+        </p>
+      {% else %}
+        <form method="POST" action="/reserve/{{ listing.id }}">
+          <button class="primary-btn">
+            🛡 {{ _("Зарезервировать через Relovo") }}
+          </button>
+        </form>
+        <p class="reserve-hint">
+          {{ _("Резервирование создаёт сделку. Документы и оплата проходят через Relok.") }}
+        </p>
+      {% endif %}
     </div>
+  {% elif not session.get("user_id") %}
+    <div class="reserve-box">
+      <a href="/login" class="primary-btn">
+        {{ _("Войти, чтобы зарезервировать") }}
+      </a>
+    </div>
+  {% endif %}
 
-    {% if listing.images|length > 5 %}
-        <button class="show-all-btn"
-                onclick="window.location.href='/listing/{{ listing.id }}/photos'">
-            {{ _("Показать все фотографии") }} ({{ listing.images|length }})
-        </button>
-    {% endif %}
+  <!-- GALLERY -->
+  <div class="listing-gallery">
+    {% for img in listing.images[:5] %}
+      <img src="/static/uploads/{{ img.filename }}"
+           class="gallery-img"onclick='openSlider({{ loop.index0 }})'>
+    {% endfor %}
+  </div>
 
-    <!-- DESCRIPTION -->
-    {% if listing.description %}
-        <p class="description">{{ listing.description }}</p>
-    {% else %}
-        <p class="description" style="opacity:.7;">{{ _("Описание пока не добавлено") }}</p>
-    {% endif %}
-<!--
-    {% if session.get("user_id") and user and user.id == listing.user_id %}
-        <div class="card" style="margin-top:14px;">
-            <h3 style="margin-top:0;">{{ _("Редактировать описание") }}</h3>
+  {% if listing.images|length > 5 %}
+    <button class="show-all-btn"
+            onclick="window.location.href='/listing/{{ listing.id }}/photos'">
+      {{ _("Показать все фотографии") }} ({{ listing.images|length }})
+    </button>
+  {% endif %}
 
-            <form method="POST" action="/listing/{{ listing.id }}/update-description">
-                <textarea name="description"
-                        rows="6"
-                        style="width:100%;"
-                        placeholder="{{ _('Введите описание...') }}">{{ listing.description or "" }}</textarea>
+  <!-- DESCRIPTION -->
+  {% if listing.description %}
+    <p class="description">{{ listing.description }}</p>
+  {% else %}
+    <p class="description" style="opacity:.7;">{{ _("Описание пока не добавлено") }}</p>
+  {% endif %}
 
-                <button class="primary-btn" type="submit" style="margin-top:10px;">
-                    {{ _("Сохранить") }}
-                </button>
-            </form>
-        </div>
-    {% endif %}
-    -->
-    <hr>
+  <hr>
 
-    <!-- REVIEWS -->
-    <h2 class="section-title">{{ _("Отзывы") }}</h2>
+  <!-- REVIEWS -->
+  <h2 class="section-title">{{ _("Отзывы") }}</h2>
 
-    <div class="reviews-container">
-        {% if reviews %}
-            {% for r in reviews %}
-            <div class="review-card">
-
-                <div class="review-header">
-                    <div class="review-stars">
-                        {% for i in range(r.rating) %}★{% endfor %}
-                        {% for i in range(5 - r.rating) %}☆{% endfor %}
-                    </div>
-
-                    <span class="review-author">{{ r.user.email }}</span>
-                    <span class="review-date">
-                        {{ r.created_at.strftime('%d.%m.%Y') }}
-                    </span>
-                </div>
-
-                {% if r.text %}
-                    <p class="review-text">{{ r.text }}</p>
-                {% endif %}
-
+  <div class="reviews-container">
+    {% if reviews %}
+      {% for r in reviews %}
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-stars">
+              {% for i in range(r.rating) %}★{% endfor %}
+              {% for i in range(5 - r.rating) %}☆{% endfor %}
             </div>
-            {% endfor %}
-        {% else %}
-            <p>{{ _("Отзывов пока нет") }}</p>
+
+            <span class="review-author">{{ r.user.email }}</span>
+            <span class="review-date">{{ r.created_at.strftime('%d.%m.%Y') }}</span>
+          </div>
+
+          {% if r.text %}
+            <p class="review-text">{{ r.text }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>{{ _("Отзывов пока нет") }}</p>
+    {% endif %}
+  </div>
+
+  <!-- ADD REVIEW FORM -->
+  <div class="review-form">
+
+    {% if not session.get("user_id") %}
+      <p style="margin:0;">
+        <a href="/login" class="nav-login-btn">{{ _("Войти") }}</a>
+        {{ _("чтобы оставить отзыв") }}
+      </p>
+    {% else %}
+
+      {# hide form if user already left a review #}
+      {% set ns = namespace(my_review=false) %}
+      {% for r in reviews %}
+        {% if user and r.user_id == user.id %}
+          {% set ns.my_review = true %}
         {% endif %}
-    </div>
+      {% endfor %}
+
+      {% if ns.my_review %}
+        <p style="margin:0; opacity:.75;">{{ _("Вы уже оставили отзыв для этого объявления.") }}</p>
+      {% else %}
+        <h3 style="margin-top:0;">{{ _("Оставить отзыв") }}</h3>
+
+        <form method="POST" action="/listing/{{ listing.id }}/review">
+          <div class="input-group">
+            <label>{{ _("Оценка") }}</label>
+            <select name="rating" required>
+              <option value="5">★★★★★ (5)</option>
+              <option value="4">★★★★☆ (4)</option>
+              <option value="3">★★★☆☆ (3)</option>
+              <option value="2">★★☆☆☆ (2)</option>
+              <option value="1">★☆☆☆☆ (1)</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label>{{ _("Комментарий") }}</label>
+            <textarea name="text" placeholder="{{ _('Напишите пару слов...') }}"></textarea>
+          </div>
+
+          <button class="primary-btn" type="submit">
+            {{ _("Отправить отзыв") }}
+          </button>
+        </form>
+      {% endif %}
+    {% endif %}
+  </div>
 
 </div>
 
 <!-- SLIDER -->
 <div id="slider" class="slider-overlay">
-    <span class="slider-close" onclick="closeSlider()">×</span>
-    <button class="slider-arrow left" onclick="prevSlide()">‹</button>
-    <img id="sliderImage" class="slider-image">
-    <button class="slider-arrow right" onclick="nextSlide()">›</button>
+  <span class="slider-close" onclick="closeSlider()">×</span>
+  <button class="slider-arrow left" onclick="prevSlide()">‹</button>
+  <img id="sliderImage" class="slider-image">
+  <button class="slider-arrow right" onclick="nextSlide()">›</button>
 </div>
+
 
 <script>
 const images = [
